@@ -6,13 +6,14 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:28:38 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/13 11:28:47 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:01:43 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-ft_isdigit(int c)
+int ft_isdigit(int c)
 {
-    if (c >= '0' && c <= '9'){
+    if (c >= '0' && c <= '9')
+    {
         return (1);
     }
     return (0);
