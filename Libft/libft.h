@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:25:27 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/14 13:30:20 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:39:30 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
-//verified functions
+//Verification functions
 int ft_isalpha(int c); // done
 int ft_isdigit(int c); // done
 int ft_isalnum(int c); // done
@@ -24,15 +24,19 @@ int ft_isascii(int c); // done
 int ft_isprint(int c); // done
 
 
-size_t ft_strlen(const char *s);// done
+// memory functions
 void *ft_memset(void *b, int c, size_t len);// done
 void ft_bzero(void *s, size_t n); // done
 void *ft_memcpy(void *dst, const void *src, size_t n);//done 
-void *ft_memmove(void *dst, const void *src, size_t len);
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize);
+void *ft_memmove(void *dst, const void *src, size_t len);//done
+void *ft_calloc(size_t nmemb, size_t size);
 
+//string functions
+size_t ft_strlen(const char *s);// done
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize);// done
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize); //done
 
+// to.. functions
 int ft_toupper(int c);
 int ft_tolower(int c);
 
@@ -48,7 +52,7 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 
 int ft_atoi(const char *str);
-void *ft_calloc(size_t nmemb, size_t size);
+
 char *ft_strdup(const char *s1);
 
 
