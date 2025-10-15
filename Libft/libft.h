@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:25:27 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:22:57 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:55:52 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize); //done
 int ft_strncmp(const char *s1, const char *s2, size_t n);//done 
 char *ft_strnstr(const char *haystack, const char *needle, size_t len); // done 
 char *ft_strdup(const char *s1); // done
+
 //Shearch functions
 char *ft_strchr(const char *s, int c);// done
 char *ft_strrchr(const char *s, int c);// done
