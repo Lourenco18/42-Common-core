@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:25:27 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:22:23 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:22:57 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len); // done
 char *ft_strdup(const char *s1); // done
 //Shearch functions
 char *ft_strchr(const char *s, int c);// done
-char *ft_strrchr(const char *s, int c);
+char *ft_strrchr(const char *s, int c);// done
 
 // Conversion functions
 int ft_toupper(int c);//done
