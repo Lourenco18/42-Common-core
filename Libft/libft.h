@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:25:27 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 11:24:03 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:15:31 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,18 @@ int ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t ft_strlen(const char *s);// done
 size_t ft_strlcpy(char *dst, const char *src, size_t dstsize);// done
 size_t ft_strlcat(char *dst, const char *src, size_t dstsize); //done
+int ft_strncmp(const char *s1, const char *s2, size_t n);//done 
+char *ft_strnstr(const char *haystack, const char *needle, size_t len); // done 
+char *ft_strdup(const char *s1);
+//Shearch functions
 char *ft_strchr(const char *s, int c);
 char *ft_strrchr(const char *s, int c);
-int ft_strncmp(const char *s1, const char *s2, size_t n);
-char *ft_strnstr(const char *haystack, const char *needle, size_t len);
-char *ft_strdup(const char *s1);
 
-// to.. functions
+// Conversion functions
 int ft_toupper(int c);//done
 int ft_tolower(int c);// done 
 // transform functions
-int ft_atoi(const char *str);
+int ft_atoi(const char *str);// done
 
 
 
