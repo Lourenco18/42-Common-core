@@ -6,18 +6,18 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:26:48 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/14 13:30:11 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:34:37 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-void *ft_memcpy(void *dst, const void *src, size_t n)
+void *ft_memcpy(void *dst, const void *src, unsigned int n)
 {
     if (!dst && !src)
-        return (NULL);
+        return ((0));
     unsigned char *d = (unsigned char *)dst;
     const unsigned char *s = (const unsigned char *)src;
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         d[i] = s[i];
     return (dst);
 }

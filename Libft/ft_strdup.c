@@ -6,11 +6,10 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:19:01 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:08:19 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:36:30 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 char *ft_strdup(char *src)
 {
     int i;
@@ -24,7 +23,7 @@ char *ft_strdup(char *src)
     }
     dup = (char *)malloc(sizeof(char) * (len + 1));
     if (!dup)
-        return (NULL);
+        return ((0));
     i = 0;
     while (src[i])
     {

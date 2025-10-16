@@ -6,15 +6,14 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:08:08 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:08:19 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:32:10 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char *ft_strnstr(const char *haystack, const char *needle, unsigned int len)
 {
-    size_t i = 0;
-    size_t j;
+    int i = 0;
+    int j;
 
     if (!*needle)
         return (char *)haystack;
@@ -30,5 +29,5 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
         }
         i++;
     }
-    return NULL;
+    return (0);
 }

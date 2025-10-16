@@ -6,12 +6,11 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:38:31 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:04:08 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:36:44 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int ft_strlen(char *s)
+unsigned int ft_strlen(char *s)
 {
     int size;
 

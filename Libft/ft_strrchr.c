@@ -6,14 +6,13 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:21:42 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:11:18 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:36:30 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 char *ft_strrchr(const char *s, int c)
 {
-    const char *last = NULL;
+    const char *last = (0);
     while (*s)
     {
         if (*s == (char)c)

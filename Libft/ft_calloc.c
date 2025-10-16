@@ -6,19 +6,18 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:18:25 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:18:32 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:35:27 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-void *ft_calloc(size_t nmemb, size_t size)
+void *ft_calloc(int nmemb, unsigned int size)
 {
     void *ptr;
     if (nmemb && size && nmemb > SIZE_MAX / size)
-        return NULL;
+        return (0);
     ptr = malloc(nmemb * size);
     if (!ptr)
-        return NULL;
+        return (0);
     ft_bzero(ptr, nmemb * size);
     return ptr;
 }

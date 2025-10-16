@@ -6,11 +6,11 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:47:23 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/14 13:30:20 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:34:12 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memset(void *b, int c, int len)
+void *ft_memset(void *b, int c, unsigned int len)
 { // b- memoria a ser modificada len- numero de bytes a ser definidos c- valor a definir
     unsigned char *p = (unsigned char *)b;
     while (len--)
