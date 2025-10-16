@@ -6,19 +6,22 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:04:30 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/15 12:06:36 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:10:37 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int ft_strcmp(char *s1, char *s2)
 {
-    size_t i = 0;
-    while (i < n && (s1[i] || s2[i]))
+    int i;
+
+    i = 0;
+    while (s1[i] && s2[i])
     {
-        if ((unsigned char)s1[i] != (unsigned char)s2[i])
+        if (s1[i] != s2[i])
+        {
             return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+        }
         i++;
     }
-    return 0;
+    return (0);
 }

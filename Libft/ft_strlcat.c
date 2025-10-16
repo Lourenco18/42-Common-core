@@ -6,26 +6,43 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:37:06 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/14 14:37:29 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:10:11 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+unsigned int ft_strlen(char *str)
 {
-    size_t dstlen = 0;
-    while (dstlen < dstsize && dst[dstlen])
-        dstlen++;
-    size_t srclen = ft_strlen(src);
-    if (dstlen == dstsize)
-        return (dstsize + srclen);
-    size_t i = 0;
-    while (dstlen + i + 1 < dstsize && src[i])
+    unsigned int i;
+
+    i = 0;
+    while (str[i])
     {
-        dst[dstlen + i] = src[i];
         i++;
     }
-    if (dstlen + i < dstsize)
-        dst[dstlen + i] = '\0';
-    return (dstlen + srclen);
+    return (i);
+}
+
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+{
+    unsigned int i;
+    unsigned int j;
+    unsigned int dest_len;
+    unsigned int src_len;
+
+    dest_len = ft_strlen(dest);
+    src_len = ft_strlen(src);
+    if (size <= dest_len)
+    {
+        return (size + src_len);
+    }
+    i = dest_len;
+    j = 0;
+    while (src[j] && i + 1 < size)
+    {
+        dest[i] = src[j];
+        i++;
+        j++;
+    }
+    dest[i] = '\0';
+    return (dest_len + src_len);
 }

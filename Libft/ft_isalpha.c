@@ -6,14 +6,15 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:28:22 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/13 11:28:26 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:07:11 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_isalpha(int c)
 {
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')){
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+    {
         return (1);
     }
     return (0);
-} 
+}
