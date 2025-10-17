@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:25:27 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/17 11:30:22 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:34:54 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void *ft_memmove(void *dst, const void *src, int len);         // done
 void *ft_calloc(unsigned int nmemb, unsigned int size);        // done
 void *ft_memchr(const void *s, int c, unsigned int n);         // done
 int ft_memcmp(const void *s1, const void *s2, unsigned int n); // done
-char *ft_substr(char const *s, unsigned int start, int len);   // done
+char *ft_substr(char const *s, int start, int len);            // done
 char *ft_strjoin(char const *s1, char const *s2);
 char *ft_strtrim(char const *s1, char const *set);
 char **ft_split(char const *s, char c);
@@ -56,9 +56,9 @@ int ft_tolower(int c); // done
 int ft_atoi(const char *str); // done
 
 // Output functions
-void ft_putchar_fd(char c, int fd);
-void ft_putstr_fd(char *s, int fd);
-void ft_putendl_fd(char *s, int fd);
-void ft_putnbr_fd(int n, int fd);
+void ft_putchar_fd(char c, int fd);  // done
+void ft_putstr_fd(char *s, int fd);  // done
+void ft_putendl_fd(char *s, int fd); // done
+void ft_putnbr_fd(int n, int fd);    // done
 
 #endif

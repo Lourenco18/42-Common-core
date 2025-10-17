@@ -10,9 +10,6 @@ TEST = test
 TEST_SRC = test.c
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
-# -------------------
-# Targets
-# -------------------
 
 all: $(NAME)
 
