@@ -6,11 +6,11 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:04:32 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:34:24 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:50:06 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void ft_bzero(void *s, unsigned int n)
 {

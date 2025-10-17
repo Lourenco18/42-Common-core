@@ -6,28 +6,18 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:37:06 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:32:12 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:07:43 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int ft_strlen(char *str)
-{
-    unsigned int i;
+#include "libft.h"
 
-    i = 0;
-    while (str[i])
-    {
-        i++;
-    }
-    return (i);
-}
-
-unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int ft_strlcat(char *dest, const char *src, int size)
 {
-    unsigned int i;
-    unsigned int j;
-    unsigned int dest_len;
-    unsigned int src_len;
+    int i;
+    int j;
+    int dest_len;
+    int src_len;
 
     dest_len = ft_strlen(dest);
     src_len = ft_strlen(src);

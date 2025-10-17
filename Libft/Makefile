@@ -1,21 +1,36 @@
 NAME = libft.a
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_*.c
+AR = ar rcs
+
+SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+TEST = test
+TEST_SRC = test.c
+TEST_OBJ = $(TEST_SRC:.c=.o)
+
+# -------------------
+# Targets
+# -------------------
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	$(AR) $@ $^
+
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+test: $(NAME) $(TEST_OBJ)
+	$(CC) $(CFLAGS) $(TEST_OBJ) -L. -lft -o $(TEST)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(TEST_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST)
 
 re: fclean all
 
-bonus:
-	$(MAKE) BONUS=1
+.PHONY: all clean fclean re test

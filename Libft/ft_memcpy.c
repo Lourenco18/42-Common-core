@@ -6,12 +6,12 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:26:48 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:34:37 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:02:37 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-void *ft_memcpy(void *dst, const void *src, unsigned int n)
+void *ft_memcpy(void *dst, const void *src, int n)
 {
     if (!dst && !src)
         return ((0));

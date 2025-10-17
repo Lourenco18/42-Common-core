@@ -6,14 +6,16 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:08:08 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:32:10 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:09:48 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strnstr(const char *haystack, const char *needle, unsigned int len)
+char *ft_strnstr(const char *haystack, const char *needle, int len)
 {
-    int i = 0;
+    int i;
     int j;
+
+    i = 0;
 
     if (!*needle)
         return (char *)haystack;

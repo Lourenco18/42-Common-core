@@ -6,12 +6,12 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:26:02 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/16 12:36:30 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:03:04 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-void *ft_memmove(void *dst, const void *src, unsigned int len)
+void *ft_memmove(void *dst, const void *src, int len)
 {
     if (!dst && !src)
         return ((0));
