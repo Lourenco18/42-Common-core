@@ -6,11 +6,10 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:30:26 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/17 11:09:08 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:26:22 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 unsigned int ft_strlcpy(char *dst, const char *src, int dstsize)

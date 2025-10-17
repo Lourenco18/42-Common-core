@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:18:25 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/17 11:26:22 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/17 11:22:25 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/17 11:23:03 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(unsigned int nmemb, unsigned int size)
+char *ft_substr(char const *s, unsigned int start, int len)
 {
-    void *ptr;
+    char *substr;
+    int i;
+    int s_len;
 
-    if (nmemb && size && nmemb > 4294967295U / size)
+    if (!s)
         return (0);
-    ptr = malloc(nmemb * size);
-    if (!ptr)
+    s_len = ft_strlen(s);
+    if (start >= s_len)
+        return (ft_strdup(""));
+    if (len > s_len - start)
+        len = s_len - start;
+    substr = (char *)malloc(len + 1);
+    if (!substr)
         return (0);
-    ft_bzero(ptr, nmemb * size);
-    return (ptr);
+    i = 0;
+    while (i < len)
+    {
+        substr[i] = s[start + i];
+        i++;
+    }
+    substr[i] = '\0';
+    return (substr);
 }

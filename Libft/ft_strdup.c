@@ -6,11 +6,10 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:19:01 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/17 11:01:58 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:26:22 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 char *ft_strdup(char *src)
 {
     int i;

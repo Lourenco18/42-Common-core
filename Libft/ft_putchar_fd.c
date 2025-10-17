@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 13:26:48 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/17 11:26:22 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/17 11:28:14 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/17 11:30:22 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memcpy(void *dst, const void *src, int n)
+#include <unistd.h>
+
+void ft_putchar_fd(char c, int fd)
 {
-    if (!dst && !src)
-        return ((0));
-    unsigned char *d = (unsigned char *)dst;
-    const unsigned char *s = (const unsigned char *)src;
-    for (int i = 0; i < n; i++)
-        d[i] = s[i];
-    return (dst);
+    write(fd, &c, 1);
 }

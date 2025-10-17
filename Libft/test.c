@@ -65,7 +65,7 @@ int main(void)
     printf("ft_strncmp: %d\n", ft_strncmp("abc", "abd", 2));
 
     char *found_str = ft_strnstr("Hello World", "World", 11);
-    printf("ft_strnstr: %s\n", found_str ? found_str : "NULL");
+    printf("ft_strnstr: %s\n", found_str ? found_str : "0");
 
     char *dup = ft_strdup("Duplicate me");
     printf("ft_strdup: %s\n", dup);
