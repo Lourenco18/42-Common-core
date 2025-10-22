@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 18:48:16 by hroxo             #+#    #+#             */
+/*   Created: 2025/09/04 18:48:16 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:21:19 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*head;
+	t_list *head;
 
 	head = lst;
 	if (!f || !lst)
-		return ;
+		return;
 	while (head)
 	{
 		f(head->content);

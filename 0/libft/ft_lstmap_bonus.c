@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 00:25:45 by hroxo             #+#    #+#             */
+/*   Created: 2025/09/05 00:25:45 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:22:02 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new;
-	t_list	*head;
-	void	*content;
+	t_list *new;
+	t_list *head;
+	void *content;
 
 	if (!f || !del)
 		return (NULL);

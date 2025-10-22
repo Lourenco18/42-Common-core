@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 21:49:51 by hroxo             #+#    #+#             */
+/*   Created: 2025/09/02 21:49:51 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:20:09 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*head;
-	t_list	*next;
+	t_list *head;
+	t_list *next;
 
 	head = *lst;
 	next = NULL;
 	if (!del || !*lst)
-		return ;
+		return;
 	while (head)
 	{
 		next = head->next;

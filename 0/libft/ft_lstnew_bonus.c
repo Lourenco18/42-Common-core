@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 23:50:10 by hroxo             #+#    #+#             */
+/*   Created: 2025/09/01 23:50:10 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:22:19 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list *ft_lstnew(void *content)
 {
-	t_list	*new_node;
+	t_list *new_node;
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)

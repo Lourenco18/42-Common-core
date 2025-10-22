@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 00:32:02 by hroxo             #+#    #+#             */
+/*   Created: 2025/09/02 00:32:02 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:37:55 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int ft_lstsize(t_list *lst)
 {
-	int	len;
+	int len;
 
 	len = 0;
 	while (lst)

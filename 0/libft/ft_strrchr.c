@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/28 16:00:07 by hroxo             #+#    #+#             */
+/*   Created: 2025/08/28 16:00:07 by dasantos             #+#    #+#             */
 /*   Updated: 2025/10/22 10:40:33 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-	int	i;
-	int	last_c;
+	int i;
+	int last_c;
 
 	last_c = -1;
 	i = 0;
