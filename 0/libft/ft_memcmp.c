@@ -6,16 +6,16 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:19:35 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/21 09:23:50 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/22 10:37:57 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*a = (const unsigned char *)s1;
-	const unsigned char	*b = (const unsigned char *)s2;
+	const unsigned char *a = (const unsigned char *)s1;
+	const unsigned char *b = (const unsigned char *)s2;
 
 	while (n--)
 	{
