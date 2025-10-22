@@ -5,33 +5,87 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/15 12:21:42 by dasantos          #+#    #+#              #
-#    Updated: 2025/10/21 08:37:45 by dasantos         ###   ########.fr        #
+#    Created: 2025/08/26 18:47:29 by hroxo             #+#    #+#              #
+#    Updated: 2025/10/22 10:18:23 by dasantos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+SRC =	ft_isalpha.c \
+       	ft_isdigit.c \
+	ft_isalnum.c \
+	ft_isascii.c \
+	ft_isprint.c \
+	ft_strlen.c \
+	ft_memset.c \
+	ft_bzero.c \
+	ft_memcpy.c \
+	ft_strlcpy.c \
+	ft_memmove.c \
+	ft_strlcat.c \
+	ft_tolower.c \
+	ft_toupper.c \
+	ft_strchr.c \
+	ft_strrchr.c \
+	ft_strncmp.c \
+	ft_memchr.c \
+	ft_strnstr.c \
+	ft_atoi.c \
+	ft_calloc.c \
+	ft_strdup.c \
+	ft_substr.c \
+	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_memcmp.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_striteri.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c
+OBJ = $(SRC:.c=.o)
 
-SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
+SRCB =	$(SRC) \
+	ft_lstnew_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstsize_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c \
+	ft_lstadd_back_bonus.c
+OBJB = $(SRCB:.c=.o)
 
-.PHONY: all clean fclean re
+RM = rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
-
 %.o: %.c
-		$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-		rm -f $(OBJS)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ) 
+
+clean: 
+	$(RM) $(OBJ) $(OBJB)
 
 fclean: clean
-		rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+	rm -f .bonus
+
+bonus: .bonus
+
+.bonus: $(OBJB)
+	@touch .bonus
+	ar rcs $(NAME) $(OBJB)
+
+.PHONY: all clean fclean re bonus
