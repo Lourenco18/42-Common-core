@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 11:28:35 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/21 09:27:14 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/22 12:34:17 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/22 12:34:18 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	while (*s)
-		write(fd, s++, 1);
-}
-
-/*
+#include "ft_printf.h"
 #include <stdio.h>
 
-int	main(void)
-
-	ft_putstr_fd("Hello", 1);
-
-	return (0);
+int main(void)
+{
+    ft_printf("Meu printf: %d %x %s\n", 42, 42, "teste");
+    printf("Original  : %d %x %s\n", 42, 42, "teste");
+    return 0;
 }
-*/
