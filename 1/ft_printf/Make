@@ -5,37 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/22 12:39:27 by dasantos          #+#    #+#              #
-#    Updated: 2025/10/23 11:20:11 by dasantos         ###   ########.fr        #
+#    Created: 2025/10/23 11:21:39 by dasantos          #+#    #+#              #
+#    Updated: 2025/10/23 11:22:18 by dasantos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
+NAME = libftprintf.a
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-AR			= ar rcs
-RM			= rm -f
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-SRC			= ft_printf.c
-OBJ			= $(SRC:.c=.o)
+SRC =	ft_printf.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_putnbr.c \
+		ft_putunbr.c \
+		ft_puthex.c \
+		ft_put_pointer.c
+
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(AR) $(NAME) $(OBJ)
-	@echo "✅ $(NAME) created successfully!"
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	@$(RM) $(OBJ)
-	@echo "🧹 Object files cleaned."
+	rm -f $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo "🧽 All cleaned (libftprintf.a removed)."
+	rm -f $(NAME)
 
 re: fclean all
-
-
 
 .PHONY: all clean fclean re
