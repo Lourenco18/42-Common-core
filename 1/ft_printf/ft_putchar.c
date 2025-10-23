@@ -6,13 +6,14 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:28:14 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:28:59 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/23 10:59:20 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+int ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

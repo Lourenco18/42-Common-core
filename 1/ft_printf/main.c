@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 12:34:17 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:36:52 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:11:46 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:11:47 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main(void)
 {
-    ft_printf("Meu printf: %d %x %s\n", 42, 42, "teste");
-    printf("Original  : %d %x %s\n", 42, 42, "teste");
-    return 0;
+    ft_printf("Meu printf: %d %x %s %p %%\n", 42, 42, "teste", &main);
+    printf("Original  : %d %x %s %p %%\n", 42, 42, "teste", &main);
+    return (0);
 }

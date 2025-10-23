@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 12:36:57 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:37:33 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:11:34 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:11:36 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_puthex_ptr(unsigned long n)
+static int print_ptr_hex(unsigned long n)
 {
-	int count;
 	char *base;
+	int count;
 
-	count = 0;
 	base = "0123456789abcdef";
+	count = 0;
 	if (n >= 16)
-		count += ft_puthex_ptr(n / 16);
+		count += print_ptr_hex(n / 16);
 	count += ft_putchar(base[n % 16]);
 	return (count);
 }
@@ -30,11 +30,10 @@ int ft_putptr(void *ptr)
 	unsigned long address;
 	int count;
 
-	count = 0;
 	if (!ptr)
-		return (ft_putstr("(nil)"));
+		return (write(1, "(nil)", 5));
 	address = (unsigned long)ptr;
-	count += ft_putstr("0x");
-	count += ft_puthex_ptr(address);
+	count = write(1, "0x", 2);
+	count += print_ptr_hex(address);
 	return (count);
 }

@@ -5,25 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 11:28:57 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:36:20 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:10:44 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:10:45 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include "ft_printf.h"
 
-void ft_putnbr_fd(int n, int fd)
+static void print_nbr(long n)
 {
-	long num;
+	char c;
 
-	num = n;
-	if (num < 0)
+	if (n >= 10)
+		print_nbr(n / 10);
+	c = (n % 10) + '0';
+	write(1, &c, 1);
+}
+
+static int count_digits(long n)
+{
+	int count;
+
+	count = 1;
+	while (n >= 10)
 	{
-		ft_putchar('-');
-		num = -num;
+		n /= 10;
+		count++;
 	}
-	if (num >= 10)
-		ft_putnbr(num / 10);
-	ft_putchar((num % 10) + '0');
+	return (count);
+}
+
+int ft_putnbr(int n)
+{
+	long nb;
+	int count;
+
+	nb = n;
+	count = 0;
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+		count++;
+	}
+	print_nbr(nb);
+	count += count_digits(nb);
+	return (count);
 }

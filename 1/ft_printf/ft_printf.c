@@ -5,63 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 12:20:26 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:25:52 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:10:07 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:13:30 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-// vou usar a libft:
-//  ft_putchar_fd.c
-//  ft_putstr_fd.c
-//  ft_putnbr_fd.c
-//  novas funcoes:
-//  ft_puthex_fd.c
-//  ft_putptr_fd.c
-// ft_putunbr_fd.c
 
-static int ft_formats(va_list args, const char format)
+static int conversao(char format, va_list args)
 {
-    int count;
-
-    count = 0;
-    if (format == 'c')
-        count += ft_putchar(va_arg(args, int));
-    else if (format == 's')
-        count += ft_putstr(va_arg(args, char *));
-    else if (format == 'p')
-        count += ft_putptr(va_arg(args, void *));
+    if (format == '%')
+        return (write(1, "%", 1)); /* imprime o caractere '%'  caso seja "%%"*/
+    else if (format == 'c')        /* caractere */
+        return (ft_putchar(va_arg(args, int)));
+    else if (format == 's') /* string */
+        return (ft_putstr(va_arg(args, char *)));
+    else if (format == 'p') /* ponteiro */
+        return (ft_putptr(va_arg(args, void *)));
     else if (format == 'd' || format == 'i')
-        count += ft_putnbr(va_arg(args, int));
-    else if (format == 'u')
-        count += ft_putunbr(va_arg(args, unsigned int));
-    else if (format == 'x' || format == 'X')
-        count += ft_puthex(va_arg(args, unsigned int), format);
-    else if (format == '%')
-        count += ft_putchar('%');
-    return (count);
+        return (ft_putnbr(va_arg(args, int)));
+    else if (format == 'u') /* inteiro sem sinal */
+        return (ft_putunbr(va_arg(args, unsigned int)));
+    else if (format == 'x') /* hexadecimal minúsculo */
+        return (ft_puthex(va_arg(args, unsigned int), 0));
+    else if (format == 'X') /* hexadecimal maiúsculo */
+        return (ft_puthex(va_arg(args, unsigned int), 1));
+    return (0);
 }
 
-int ft_printf(const char *fmt, ...)
+int ft_printf(const char *format, ...)
 {
-    va_list args;
     int i;
-    int count;
+    int len;
+    va_list args; /* lista de argumentos variaveis */
 
+    if (!format) /* se o formato for NULL, retorna 0 */
+        return (0);
     i = 0;
-    count = 0;
-    va_start(args, fmt);
-    while (fmt[i])
+    len = 0;
+    va_start(args, format); /* inicializa a lista de argumentos */
+    while (format[i])
     {
-        if (fmt[i] == '%' && fmt[i + 1])
+        if (format[i] == '%') /* encontrou um especificador de formato */
         {
             i++;
-            count += ft_formats(args, fmt[i]);
+            len += conversao(format[i], args); /* processa a conversão */
         }
         else
-            count += ft_putchar(fmt[i]);
+            len += write(1, &format[i], 1); /* escreve caractere normal */
         i++;
     }
-    va_end(args);
-    return (count);
+    va_end(args); /* finaliza a lista de argumentos */
+    return (len);
 }

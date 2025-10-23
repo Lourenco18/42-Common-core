@@ -5,17 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 11:28:35 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/22 12:29:50 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:10:33 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:10:35 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-void ft_putstr(char *s)
+int ft_putstr(char *s)
 {
+	int count;
+
+	count = 0;
 	if (!s)
-		return;
+		return (write(1, "(null)", 6));
 	while (*s)
+	{
 		write(1, s++, 1);
+		count++;
+	}
+	return (count);
 }
