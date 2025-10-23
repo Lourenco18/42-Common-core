@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/14 12:04:32 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/21 10:44:06 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putunbr(unsigned int n)
+#include "libft.h"
+// preencher toda a memória com '0'
+void ft_bzero(void *s, size_t n)
 {
-	int	count;
-
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+    ft_memset(s, 0, n);
 }

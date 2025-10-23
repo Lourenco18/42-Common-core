@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/22 10:58:21 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/22 10:58:51 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putunbr(unsigned int n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	count;
+	t_list	*new;
+	t_list	*head;
+	void	*content;
 
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+	if (!f || !del)
+		return (NULL);
+	head = NULL;
+	while (lst)
+	{
+		content = f(lst->content);
+		new = ft_lstnew(content);
+		if (!new)
+		{
+			del(content);
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, new);
+		lst = lst->next;
+	}
+	return (head);
 }

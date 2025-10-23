@@ -6,15 +6,15 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 11:10:33 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:15:36 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/* Imprime a string 's' e retorna a quantidade de caracteres impressos (FUNCAO PRINCIPAL) */
-int ft_putstr(char *s)
+
+int	ft_putstr(char *s)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (!s)

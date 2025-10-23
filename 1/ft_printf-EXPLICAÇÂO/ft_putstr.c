@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_pointer.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:34 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:19:58 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/23 11:10:33 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/23 11:15:36 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_pointer(unsigned long n)
+/* Imprime a string 's' e retorna a quantidade de caracteres impressos (FUNCAO PRINCIPAL) */
+int	ft_putstr(char *s)
 {
-	char	*base;
-	int		count;
+	int	count;
 
-	base = "0123456789abcdef";
 	count = 0;
-	if (n >= 16)
-		count += print_pointer(n / 16);
-	count += ft_putchar(base[n % 16]);
-	return (count);
-}
-
-int	ft_put_pointer(void *ptr)
-{
-	unsigned long	address;
-	int				count;
-
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	address = (unsigned long)ptr;
-	count = write(1, "0x", 2);
-	count += print_pointer(address);
+	if (!s)
+		return (write(1, "(null)", 6));
+	while (*s)
+	{
+		write(1, s++, 1);
+		count++;
+	}
 	return (count);
 }

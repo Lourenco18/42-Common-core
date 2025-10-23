@@ -1,24 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/22 10:58:33 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/22 10:58:51 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putunbr(unsigned int n)
+int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+	len = 0;
+	while (lst)
+	{
+		len++;
+		lst = lst->next;
+	}
+	return (len);
 }
+
+/*
+#include <stdio.h>
+
+int	main(int argc, char **argv)
+{
+	t_list	*head;
+	t_list	*current;
+
+	for (int i = 1; i < argc; i++)
+	{
+		current = ft_lstnew(argv[i]);
+		head = current;
+		current = current->next;
+	}
+	printf("%i\n", ft_lstsize(head));
+	return (0);
+}
+*/

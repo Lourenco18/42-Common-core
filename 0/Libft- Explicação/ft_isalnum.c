@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/13 11:29:03 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/18 15:20:14 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putunbr(unsigned int n)
+// verifica se é um digito ou um alpha
+// tambem podemos usar as duas funcoes ft_isdigit e ft_is_alpha
+int ft_isalnum(int c)
 {
-	int	count;
-
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
+    {
+        return (1);
+    }
+    return (0);
 }

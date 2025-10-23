@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/13 11:28:38 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/18 15:19:53 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putunbr(unsigned int n)
+int ft_isdigit(int c)
 {
-	int	count;
-
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+    if (c >= '0' && c <= '9')
+    {
+        return (1);
+    }
+    return (0);
 }

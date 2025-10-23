@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:11:04 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:29:21 by dasantos         ###   ########.fr       */
+/*   Created: 2025/10/13 11:47:23 by dasantos          #+#    #+#             */
+/*   Updated: 2025/10/20 12:18:57 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putunbr(unsigned int n)
-{
-	int	count;
-
-	count = 0;
-	if (n >= 10)
-		count += ft_putunbr(n / 10);
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+void *ft_memset(void *b, int c, unsigned int len)
+{ // b- memoria a ser modificada len- numero de bytes a ser definidos c- valor a definir
+    unsigned char *p = (unsigned char *)b;
+    while (len--)
+        *p++ = (unsigned char)c; // escreve o valor c em cada byte
+    return (b);
 }
