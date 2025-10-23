@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 11:10:07 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:13:30 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/23 11:19:15 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int conversao(char format, va_list args)
     else if (format == 's') /* string */
         return (ft_putstr(va_arg(args, char *)));
     else if (format == 'p') /* ponteiro */
-        return (ft_putptr(va_arg(args, void *)));
+        return (ft_put_pointer(va_arg(args, void *)));
     else if (format == 'd' || format == 'i')
         return (ft_putnbr(va_arg(args, int)));
     else if (format == 'u') /* inteiro sem sinal */

@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 11:11:34 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:11:36 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/23 11:19:29 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int print_ptr_hex(unsigned long n)
 	return (count);
 }
 
-int ft_putptr(void *ptr)
+int ft_put_pointer(void *ptr)
 {
 	unsigned long address;
 	int count;

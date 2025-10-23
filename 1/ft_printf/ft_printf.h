@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 11:09:49 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:15:36 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/23 11:19:29 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int ft_putstr(char *s);
 int ft_putnbr(int n);
 int ft_putunbr(unsigned int n);
 int ft_puthex(unsigned int n, int uppercase);
-int ft_putptr(void *ptr);
+int ft_put_pointer(void *ptr);
 
 #endif
