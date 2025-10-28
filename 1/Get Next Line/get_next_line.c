@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:31:07 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/28 11:01:35 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/28 11:35:15 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,21 @@
 
 char *get_next_line(int fd)
 {
-    static char *remainder;
-    char *buffer;
     char *line;
-    ssize_t bytes;
+    ssize_t bytes_read;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
+    line = malloc(256);
+    if (!line)
         return (NULL);
-    buffer = malloc(BUFFER_SIZE + 1);
-    if (!buffer)
-        return (NULL);
-    bytes = 1;
-    while (!ft_strchr(remainder, '\n') && bytes > 0) // loop until newline is found or EOF
+    bytes_read = read(fd, line, 255);
+    if (bytes_read <= 0)
     {
-        bytes = read(fd, buffer, BUFFER_SIZE); // read from file descriptor
-        if (bytes < 0)                         // check for read error
-        {
-            free(buffer);
-            return (NULL);
-        }
-        buffer[bytes] = '\0';                      // null-terminate the buffer
-        remainder = ft_strjoin(remainder, buffer); // join the strings
+        free(line);
+        return (NULL);
     }
-    free(buffer);
-    line = ft_extract_line(remainder);
-    remainder = ft_save_remainder(remainder);
+    line[bytes_read] = '\0';
     return (line);
 }
-
 /*
 int	main(void)
 {

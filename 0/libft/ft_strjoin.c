@@ -6,19 +6,19 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:25:14 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/21 09:16:27 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/28 11:14:35 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	*joined;
-	int		len1;
-	int		len2;
-	int		i;
+	char *joined;
+	int len1;
+	int len2;
+	int i;
 
 	if (!s1 || !s2)
 		return (0);
