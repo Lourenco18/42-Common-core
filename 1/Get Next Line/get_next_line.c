@@ -6,44 +6,57 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:31:07 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/28 10:21:08 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/28 11:01:35 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-1-read the file, line by line
-2-return the line with the \n included
-3-if end or any error return NULL*/
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	char *line = malloc(256); // alocar memoria para a linha
-	if (!line)
-		return (NULL);
-	ssize_t bytes_read = read(fd, line, 255); // ler do file descriptor
-	if (bytes_read <= 0)
-	{
-		free(line); // libertar memoria em caso de erro ou fim de ficheiro
-		return (NULL);
-	}
-	line[bytes_read] = '\0'; // adicionar o terminador de string
-	return (line);
+    static char *remainder;
+    char *buffer;
+    char *line;
+    ssize_t bytes;
+
+    if (fd < 0 || BUFFER_SIZE <= 0)
+        return (NULL);
+    buffer = malloc(BUFFER_SIZE + 1);
+    if (!buffer)
+        return (NULL);
+    bytes = 1;
+    while (!ft_strchr(remainder, '\n') && bytes > 0) // loop until newline is found or EOF
+    {
+        bytes = read(fd, buffer, BUFFER_SIZE); // read from file descriptor
+        if (bytes < 0)                         // check for read error
+        {
+            free(buffer);
+            return (NULL);
+        }
+        buffer[bytes] = '\0';                      // null-terminate the buffer
+        remainder = ft_strjoin(remainder, buffer); // join the strings
+    }
+    free(buffer);
+    line = ft_extract_line(remainder);
+    remainder = ft_save_remainder(remainder);
+    return (line);
 }
+
+/*
 int	main(void)
 {
-	FILE *file = fopen("file.txt", "r"); // abrir ficheiro em modo leitura
-	if (file)
-	{
-		int fd = fileno(file); // obter file descriptor
-		char *line;
-		while ((line = get_next_line(fd))) // enquanto houver linhas
-		{
-			printf("%s", line); // imprimir linha
-			free(line);         // libertar memoria
-		}
-		fclose(file); // fechar ficheiro
-		// fazer while linha a linha para a minha funcao principal
-		return (0);
-	}
-}
+    FILE *file = fopen("file.txt", "r");
+    if (file)
+    {
+        int fd = fileno(file);
+        char *line;
+        while ((line = get_next_line(fd)))
+        {
+            printf("%s", line);
+            free(line);
+        }
+        fclose(file);
+
+        return (0);
+    }
+}*/
