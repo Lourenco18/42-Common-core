@@ -13,13 +13,11 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include <fcntl.h> //open function
+# include <stdio.h>
 # include <stdlib.h> //malloc, free
 # include <unistd.h> //read function
-# include <fcntl.h> //open function
-#include <stdio.h> 
 
 char	*get_next_line(int fd);
 
 #endif
-
-
