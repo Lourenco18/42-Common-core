@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:28:22 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/28 11:35:18 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/29 09:33:14 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stddef.h>
+#include <stdio.h>
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42

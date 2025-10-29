@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:31:07 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/28 11:35:15 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/10/29 09:33:16 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char *get_next_line(int fd)
     line[bytes_read] = '\0';
     return (line);
 }
-/*
-int	main(void)
+
+int main(void)
 {
     FILE *file = fopen("file.txt", "r");
     if (file)
@@ -46,4 +46,4 @@ int	main(void)
 
         return (0);
     }
-}*/
+}
