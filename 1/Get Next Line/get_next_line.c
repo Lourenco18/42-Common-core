@@ -6,7 +6,7 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:31:07 by dasantos          #+#    #+#             */
-/*   Updated: 2025/11/02 18:28:39 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:08:04 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char *get_next_line(int fd)
 {
-    char *line = malloc(256);
+    char *line = malloc(BUFFER_SIZE + 1);
     if (!line)
         return (NULL);
-    ssize_t bytes_read = read(fd, line, 255);
+    ssize_t bytes_read = read(fd, line, BUFFER_SIZE);
     if (bytes_read <= 0)
     {
         free(line);
