@@ -6,16 +6,16 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 11:11:34 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/23 11:19:58 by dasantos         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:13:57 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_pointer(unsigned long n)
+static int print_pointer(unsigned long n)
 {
-	char	*base;
-	int		count;
+	char *base;
+	int count;
 
 	base = "0123456789abcdef";
 	count = 0;
@@ -25,10 +25,10 @@ static int	print_pointer(unsigned long n)
 	return (count);
 }
 
-int	ft_put_pointer(void *ptr)
+int ft_put_pointer(void *ptr)
 {
-	unsigned long	address;
-	int				count;
+	unsigned long address;
+	int count;
 
 	if (!ptr)
 		return (write(1, "(nil)", 5));
