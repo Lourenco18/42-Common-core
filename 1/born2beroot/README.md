@@ -2,17 +2,13 @@
 
 # Project Description
 
-## Overview
 
-This project focuses on setting up and configuring a secure virtual machine environment as part of the 42 curriculum. The main goal is to understand the fundamentals of system administration, including operating system installation, user and permission management, security policies, networking, and service configuration.
+This project focuses on setting up and configuring a secure virtual machine environment. The main goal is to understand the fundamentals of system administration, including operating system installation, user and permission management, security policies, networking, and service configuration.
 
 The virtual machine is configured following strict rules regarding security, services, and system structure, with an emphasis on best practices used in real-world Linux server environments.
 
-## Choice of Operating System
+## Debain
 
-For this project, **Debian** was chosen as the operating system.
-
-### Debian – Pros and Cons
 
 **Pros:**
 
@@ -122,23 +118,16 @@ For this project, **Debian** was chosen as the operating system.
 
 ## Technical References
 
-* Debian Documentation: [https://www.debian.org/doc/](https://www.debian.org/doc/)
-* Rocky Linux Documentation: [https://docs.rockylinux.org/](https://docs.rockylinux.org/)
-* AppArmor Documentation: [https://wiki.ubuntu.com/AppArmor](https://wiki.ubuntu.com/AppArmor)
-* SELinux Documentation: [https://selinuxproject.org/](https://selinuxproject.org/)
-* UFW Documentation: [https://help.ubuntu.com/community/UFW](https://help.ubuntu.com/community/UFW)
-* firewalld Documentation: [https://firewalld.org/documentation/](https://firewalld.org/documentation/)
+* Debian Documentation: (https://www.debian.org/doc/)
+* Rocky Linux Documentation: (https://docs.rockylinux.org/)
+* AppArmor Documentation: (https://wiki.ubuntu.com/AppArmor)
+* UFW Documentation: (https://help.ubuntu.com/community/UFW)
+* firewalld Documentation:(https://firewalld.org/documentation/)
 
-## AI Usage Disclosure
+## AI Usage 
 
 Artificial Intelligence tools were used to:
 
 * Structure and improve the README documentation
-* Clarify comparisons between operating systems and security tools
-* Improve clarity and organization of explanations
 
-No AI-generated code was directly included in the system configuration.
 
----
-
-*This README aims to provide a clear and concise overview of the project for peers, evaluators, and recruiters.*
