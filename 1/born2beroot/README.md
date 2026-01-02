@@ -1,10 +1,8 @@
 *This project has been created as part of the 42 curriculum by dasantos*
 
-# Project Description
+#
 
-## Overview
-
-This project focuses on setting up and configuring a secure virtual machine environment as part of the 42 curriculum. The main goal is to understand the fundamentals of system administration, including operating system installation, user and permission management, security policies, networking, and service configuration.
+This project focuses on setting up and configuring a secure virtual machine environment. The main goal is to understand the fundamentals of system administration, including operating system installation, user and permission management, security policies, networking, and service configuration.
 
 The virtual machine is configured following strict rules regarding security, services, and system structure, with an emphasis on best practices used in real-world Linux server environments.
 

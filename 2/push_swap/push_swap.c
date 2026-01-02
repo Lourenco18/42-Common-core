@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/13 18:36:18 by dasantos          #+#    #+#             */
-/*   Updated: 2025/12/13 18:46:54 by dasantos         ###   ########.fr       */
+/*   Created: 2025/12/29 11:53:00 by dasantos          #+#    #+#             */
+/*   Updated: 2026/01/02 10:41:23 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error_exit(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
-int	main(int ac, char **av)
+
+int	main(int argc, char **argv)
 {
-	t_node *a;
-	t_node *b;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
 	a = NULL;
 	b = NULL;
-	if (ac < 2)
-		return (0);
-	if (!parse_args(ac, av, &a))
-		error_exit();
-	if (is_sorted(a))
-		return (0);
-	if (stack_size(a) <= 5)
-		sort_small(&a, &b);
-	else
-		sort_big(&a, &b);
+	if (argc == 1 || (argc == 2 && !argv[1][0])){
+		return (1);
+	}else if(argc == 2){
+		argv = ft_split(argv[1], ' ');
+	}
+	fill_stack_a(&a, argv +1);
+	if(!stack_sorted(a)){
+		if(stack_len(a)== 2){
+			sa(&a, false);
+		}else if(stack_len(a) == 3){
+			sort_three(&a);
+		}else{
+			sort_stacks(&a, &b);
+		}
+	}
+		free_stack(&a);
+
 	return (0);
 }
