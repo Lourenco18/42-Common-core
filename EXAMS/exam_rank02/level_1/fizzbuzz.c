@@ -8,7 +8,7 @@ Allowed functions: write
 Write a program that prints the numbers from 1 to 100, each separated by a
 newline.
 
-If the number is a multiple of 3, it prints 'fizz' instead.
+If the number is a int multiple of 3, it prints 'fizz' instead.
 
 If the number is a multiple of 5, it prints 'buzz' instead.
 
