@@ -1,0 +1,328 @@
+
+PROBLEMA
+--------
+O push_swap é um algoritmo de ordenação que usa apenas duas stacks (A e B) e
+um conjunto limitado de operações para ordenar uma lista de números inteiros.
+
+OPERAÇÕES PERMITIDAS:
+- sa:  troca os dois elementos do topo de A
+- sb:  troca os dois elementos do topo de B
+- pa:  move o elemento do topo de B para A
+- pb:  move o elemento do topo de A para B
+- ra:  roda todos os elementos de A para cima (o topo vai para baixo)
+- rb:  roda todos os elementos de B para cima- rra: roda todos os elementos de A para baixo (o fundo vai para cima)
+- rrb: roda todos os elementos de B para baixo
+
+
+OBJETIVO: Ordenar todos os números em A em ordem crescente do topo para baixo,
+com B vazio.
+
+
+video: https://www.youtube.com/watch?v=wRvipSG4Mmk&t=2739s
+================================================================================
+                              ESTRUTURA DE DADOS
+================================================================================
+
+Cada nó (elemento) da stack tem:
+  - value: o número inteiro
+  - index: posição do nó no stack
+  - push_cost: quantas operações são necessárias para mover este nó
+  - above_median: booleano - está acima ou abaixo do meio?
+  - cheapest: booleano - é o nó com menos operaçoes necessarrias?
+  - next: pointer para o próximo nó
+  - prev: pointer para o nó anterior
+  - target_node: target 
+
+================================================================================
+                           FLUXO DE EXECUÇÃO
+================================================================================
+
+PASSO 1: VALIDAÇÃO E INICIALIZAÇÃO
+---------------------------------- 
+A. 
+   - Lê os argumentos da linha de comando
+   - Se 2 argumentos: usa ft_split para separar por espaços
+   - Se mais argumentos: trata cada argumento como um número
+
+B. fill_stack_a()
+   - Para cada argumento:
+     * error_syntax(): verifica se é um número válido
+     * Converte string para int (ft_atoi)
+     * Valida intervalo: INT_MIN a INT_MAX
+     * error_duplicate(): verifica se não está repetido
+     * append_node(): cria novo nó e adiciona ao final de A
+
+PASSO 2: VERIFICAR SE JÁ ESTÁ ORDENADO
+---------------------------------------
+stack_sorted() verifica se todos os elementos estão em ordem crescente
+  - Se SIM: programa termina 
+  - Se NÃO: vai para o PASSO 3
+
+PASSO 3: ESCOLHER ALGORITMO BASEADO NO TAMANHO
+-----------------------------------------------
+stack_len() retorna quantos elementos tem A
+
+SE len == 2:
+  → Chama sa(): troca simples os dois elementos 
+
+SE len == 3:
+  → Chama sort_three(): algoritmo específico para 3 elementos
+  
+SE len > 3:
+  → Chama sort_stacks(): algoritmo turk (o mais complexo)
+
+================================================================================
+                      DETALHE DO ALGORITMO sort_three()
+================================================================================
+
+Objetivo: Ordenar 3 elementos com o mínimo de operações (máx 2 operações)
+
+Estratégia:
+1. Encontra o nó com o valor máximo
+2. Coloca esse máximo no topo de A (usa 1 ou 2 rotações)
+3. Depois se o 1º elemento > 2º elemento: troca-os (sa)
+
+Porque funciona:
+- Com 3 elementos e o máximo no topo, restam 2 que podem estar:
+  a) 1 < 2 (já ordenado)
+  b) 1 > 2 (precisa swap)
+
+Exemplos:
+  [3, 1, 2] → ra → [1, 2, 3] ✓
+  [1, 3, 2] → não entra em ra/rra → sa → [3, 1, 2] → rra → [2, 3, 1]... não!
+             Vê: biggest em posição 1 → rra → [3, 2, 1] → sa → [2, 3, 1]... não!
+
+Estrutura de sort_three():
+  - Encontra o máximo
+  - Se está no topo (índice 0): ra para rotacionar
+  - Se está no meio (índice 1): rra para rotacionar de baixo
+  - Se está no fundo (índice 2): nada, fica no topo
+  - Depois verifica: se topo > segundo → sa
+
+================================================================================
+                    DETALHE DO ALGORITMO sort_stacks()
+================================================================================
+
+Objetivo: Ordenar stacks com mais de 3 elementos minimizando operações
+
+Fases:
+
+FASE 1: PUSH 2 ELEMENTOS PARA B
+-------
+  push_to_b() é chamado 2 vezes
+  - Se A tem mais de 3 elementos E não está ordenado:
+    * pb(): move o topo de A para B
+    * Reduz o tamanho de A
+
+  Resultado: A tem n-2 elementos (maiores), B tem 2 elementos
+
+FASE 2: REDUZIR A PARA 3 ELEMENTOS
+-----------------------------------
+  while (len_a-- > 3 && !stack_sorted(*stack_a))
+    Enquanto A tiver mais de 3 elementos:
+      
+      A. fill_nodes_a(A, B):
+         - current_index(A): atribui índices baseado em posição
+         - Cada nó em A:
+           * Calcula distância até chegar ao topo
+           * Calcula acima_mediana (está na metade superior?)
+           * cost_a(A, B): encontra onde este elemento ia em B
+           * Calcula push_cost: quantas operações para mover este nó
+         - set_cheapest(A): marca qual nó tem o menor custo total
+      
+      B. move_a_to_b(A, B):
+         - Encontra o nó mais barato em A (get_cheapest)
+         - Se ambos (nó de A e seu target em B) estão acima da mediana:
+           * rotate_both(A, B, ...): roda ambos simultaneamente (eficiente!)
+         - Senão, se ambos estão abaixo da mediana:
+           * reverse_rotate_both(A, B, ...): roda ao contrário em ambos
+         - prep_for_push(A, nó): coloca o nó no topo de A com rotações
+         - prep_for_push(B, target): coloca o target no topo de B
+         - pb(): move o nó de A para B
+      
+      Este processo repete até A ter apenas 3 elementos
+
+FASE 3: ORDENAR OS 3 ELEMENTOS DE A
+------------------------------------
+  sort_three(A): usa o algoritmo acima (máx 2 operações)
+
+FASE 4: MOVER TUDO DE B DE VOLTA PARA A
+----------------------------------------
+  while (*stack_b)  // Enquanto B não está vazio
+    
+    A. fill_nodes_b(A, B):
+       - Para cada nó em B:
+         * Calcula índices e posições em B
+         * Encontra onde este nó deve ir em A (seu target)
+         * Calcula o custo de movimento
+       - set_cheapest(B): marca o nó com menor custo
+    
+    B. move_b_to_a(A, B):
+       - prep_for_push(A, target_node): posiciona o destino em A
+       - pa(): move o nó de B para A (sempre do topo de B)
+    
+    Repete até B estar vazio
+
+FASE 5: POSICIONAR MÍNIMO NO TOPO
+----------------------------------
+  current_index(A): recalcula índices
+  min_on_top(A): move o elemento mínimo para o topo
+    - Encontra o mínimo
+    - Se está acima da mediana: ra (rotações normais)
+    - Se está abaixo: rra (rotações ao contrário)
+
+Resultado final: A ordenado com mínimo no topo, B vazio
+
+================================================================================
+                            CONCEITOS CHAVE
+================================================================================
+
+MEDIANA:
+- Divide o stack em duas metades
+- Se tem 10 elementos, mediana = 5
+- above_median: está nos índices 0 a 4?
+- Permite decidir qual rotação é mais eficiente
+
+PUSH_COST (Custo de Movimento):
+- Distância do nó ao topo no seu stack actual
+- Se acima_mediana: distância = índice
+- Se abaixo: distância = stack_len - índice
+- Mais um custo para mover no stack de destino
+
+NÓ MAIS BARATO:
+- A estratégia escolhe qual elemento mover de A para B
+- O que tem menor custo total = menos operações
+- Otimiza o número total de instruções
+
+TARGET NODE:
+- Para cada nó em A procura o melhor lugar em B
+- Deve ser o maior nó em B que é menor que ele
+- Permite colocar o nó corretamente na primeira tentativa
+
+ROTATE_BOTH:
+- Se ambos os nós estão acima da mediana nos seus stacks
+- Roda ambos simultaneamente: eficiente! (1 operação em vez de 2)
+
+================================================================================
+                            EXEMPLO PRÁTICO
+================================================================================
+
+Input: 3 2 1 6 5 4
+
+INICIAL:
+Stack A: [3, 2, 1, 6, 5, 4]  (topo é 3)
+Stack B: []
+
+APÓS PUSH_TO_B (2 elementos):
+Stack A: [1, 6, 5, 4]
+Stack B: [2, 3]
+
+LOOP REDUZIR A:
+Iteração 1:
+  - A tem 4 elementos
+  - fill_nodes_a calcula custos
+  - move_a_to_b move o mais barato
+  - Repete até A ter 3
+
+APÓS REDUZIR A:
+Stack A: [4, 5, 6]  (ou permutação)
+Stack B: [... vários elementos em ordem específica]
+
+SORT_THREE de A:
+  - A fica [4, 5, 6] ordenado
+
+PUSH DE VOLTA (do maior para o menor em B):
+  - Cada elemento de B volta para A no seu lugar correto
+  - Usa o algoritmo de custo mínimo
+
+FINAL:
+Stack A: [1, 2, 3, 4, 5, 6]
+Stack B: []
+
+================================================================================
+                         COMPLEXIDADE E EFICIÊNCIA
+================================================================================
+
+PIOR CASO: O(n²) operações
+- Algoritmo Turk é mais eficiente que Quick Sort simples
+- Típico: 5500 operações para 500 números aleatórios
+
+PORQUÊ TÃO BOM:
+1. Move múltiplos elementos ao mesmo tempo (rotate_both)
+2. Escolhe sempre o movimento de menor custo
+3. Mantém os 3 últimos elementos para sort_three (mais eficiente)
+4. Usa rotações inteligentes (cima ou baixo)
+
+================================================================================
+                       FICHEIROS E FUNÇÕES PRINCIPAIS
+================================================================================
+
+push_swap.c (main):
+  - Parse argumentos
+  - Inicializa stacks A e B
+  - Decide qual algoritmo usar baseado no tamanho
+
+init/stack_init.c:
+  - fill_stack_a(): cria os nós iniciais
+  - Validação de entrada
+
+sort/sort_three.c:
+  - Algoritmo para 3 elementos
+
+sort/sort_stacks.c:
+  - Algoritmo Turk completo
+  - Fases de push e pull
+
+nodes/get_cheapest.c:
+  - Encontra o nó com menor custo
+
+nodes/nodes_init_a.c:
+  - Calcula custos e targets para nós de A
+
+nodes/nodes_init_b.c:
+  - Calcula custos e targets para nós de B
+
+nodes/index_utils.c:
+  - Calcula índices e posições (above_median)
+
+ops/swap_push.c:
+  - Implementa sa, pb, pa
+
+ops/rotate_ops.c:
+  - Implementa ra, rra, rb, rrb
+
+ops/rotate_both.c:
+  - Otimizações para rodar ambos os stacks
+
+utils/:
+  - free.c: limpeza de memória
+  - stack_find.c: encontra min, max, último nó
+  - stack_check.c: valida stack
+  - split.c: divide string por delimitador
+
+ft_printf/:
+  - Imprime as operações (sa, pb, pa, etc.)
+
+================================================================================
+                            RESUMO DA ESTRATÉGIA
+================================================================================
+
+ESTRATÉGIA GERAL: DIVIDE & CONQUER COM OTIMIZAÇÃO DE CUSTO
+
+1. Validar entrada (sem duplicatas, números válidos)
+
+2. Casos base rápidos:
+   - 2 elementos: 1 swap se necessário
+   - 3 elementos: algoritmo específico (máx 2 ops)
+
+3. Casos complexos (>3 elementos) - Algoritmo Turk:
+   - Reduz A para 3 elementos movendo para B com custo mínimo
+   - Ordena os 3 de A (rápido)
+   - Move tudo de B para A mantendo ordem (custos calculados)
+   - Coloca mínimo no topo
+
+FILOSOFIA: Cada movimento é cuidadosamente calculado para minimizar operações.
+Rota ambos os stacks quando possível. Escolhe sempre o elemento mais barato
+para mover.
+
+================================================================================
