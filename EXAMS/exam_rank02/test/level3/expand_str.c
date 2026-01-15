@@ -28,47 +28,37 @@ $
 $>
 
 */
-
 #include <unistd.h>
 
-int ft_is_space(char c) {
-    if (c == ' ' || (c >= 9 && c <= 13))
-        return 1;
-    return 0;
+int is_space(char c)
+{
+    return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-int ft_strlen(char *s) {
-    int i = -1;
-    while (s[++i]);
-    return i;
-}
+int main(int argc, char **argv)
+{
+    int i = 0;
+    int first_word = 1;
 
-int main(int ac, char **av) {
-    if (ac == 2) {
-        if (!*av[1])
-            return write(1, "\n", 1);
-        
-        while(ft_is_space(*av[1]))
-            av[1]++;
-        
-        int len = ft_strlen(av[1]);
-
-        while (ft_is_space(av[1][len]))
-            len--;
-        
-        int i = -1;
-        while (av[1][++i] && i < len + 1) {
-            if (!ft_is_space(av[1][i]))
-                write(1, &av[1][i], 1);
-            while(ft_is_space(av[1][i]) && i < len + 1) {
-                if (!ft_is_space(av[1][i+1]) && av[1][i+1]) {
+    if (argc == 2)
+    {
+        while (argv[1][i])
+        {
+            if (!is_space(argv[1][i]))
+            {
+                if (!first_word)
                     write(1, "   ", 3);
-                    break ;
-                }
-                i++;
-            }
-        }
+                first_word = 0;
 
+                while (argv[1][i] && !is_space(argv[1][i]))
+                {
+                    write(1, &argv[1][i], 1);
+                    i++;
+                }
+            }
+            else
+                i++;
+        }
     }
     write(1, "\n", 1);
     return 0;

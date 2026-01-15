@@ -16,7 +16,7 @@ $>./paramsum 1 2 3 5 7 24
 6
 $>./paramsum 6 12 24 | cat -e
 3$
-$>./paramsum | cat -e
+$>./paramsum | cat -e 
 0$
 $>
 

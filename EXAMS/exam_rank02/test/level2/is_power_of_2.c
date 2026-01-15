@@ -15,11 +15,27 @@ int	    is_power_of_2(unsigned int n);
 
 */
 
-int is_power_of_2(unsigned int n) {
-    int num = 1;
-    while (num <= n) {
-        if(num == n)    return 1;
-        num *= 2;
+
+int elevado(int base, int n){
+    int result = 1;
+    if(n == 0 )return 1;
+    while(n > 0){
+        result = result* base;
+        n--;
+    }
+    return result;
+}
+
+int	    is_power_of_2(unsigned int n){
+    int number = 0;
+    while(elevado(2,number) <= n){
+        if(elevado(2,number) == n){
+            return 1;
+        }
+        number++;
     }
     return 0;
+    
 }
+
+

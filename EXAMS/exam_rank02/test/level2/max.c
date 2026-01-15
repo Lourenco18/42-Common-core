@@ -17,13 +17,17 @@ The function returns the largest number found in the array.
 If the array is empty, the function returns 0.
 
 */
+#include <stdio.h>
 
-int max(int *tab, unsigned int len) {
-    unsigned int i = -1;
-    int max = tab[0];
-    while (++i <= len) {
-        if (tab[i] > max)
-            max = tab[i];
+int		max(int* tab, unsigned int len){
+    int largest = tab[0];
+    while(len > 0){
+        if(largest < *tab){
+            largest = *tab;
+        }
+        
+        tab++;
+        len--;
     }
-    return max;
+    return (largest);
 }

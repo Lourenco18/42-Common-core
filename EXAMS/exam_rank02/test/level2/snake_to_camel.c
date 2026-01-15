@@ -23,23 +23,49 @@ $>./camel_to_snake | cat -e
 $
 
 */
-
 #include <unistd.h>
-#include <stdlib.h>
 
-int main(int ac, char **av) {
-    if (ac == 2) {
-        if (!*av[1])
-            return write(1, "\n", 1);
-        int i = -1;
-        while (av[1][++i]) {
-            if (av[1][i] == '_') {
-                i++;
-                av[1][i] = av[1][i] - 32;
-            }
-            write(1, &av[1][i], 1);
-        }
-    }
-    write(1, "\n", 1);
-    return 0;
+char	to_lower(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}
+
+char	to_upper(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+
+int	main(int argc, char **argv)
+{
+	int		i;
+	char	c;
+
+	if (argc == 2)
+	{
+		i = 0;
+		while (argv[1][i])
+		{
+			if (argv[1][i] == '_')
+			{
+				i++;
+				if (argv[1][i])
+				{
+					c = to_upper(argv[1][i]);
+					write(1, &c, 1);
+				}
+			}
+			else
+			{
+				c = to_lower(argv[1][i]);
+				write(1, &c, 1);
+			}
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }

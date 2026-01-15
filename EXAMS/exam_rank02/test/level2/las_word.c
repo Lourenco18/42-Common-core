@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 
         first_char_word++; 
 
-        //
+        
         while (first_char_word <= last_char)
         {
             write(1, &argv[1][first_char_word], 1);
