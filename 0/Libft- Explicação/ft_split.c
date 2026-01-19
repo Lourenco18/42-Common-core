@@ -6,17 +6,17 @@
 /*   By: dasantos <dasantos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 07:52:06 by dasantos          #+#    #+#             */
-/*   Updated: 2025/10/21 08:04:24 by dasantos         ###   ########.fr       */
+/*   Updated: 2026/01/19 12:26:21 by dasantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	count_substrings(char const *s, char separator)
+static int count_substrings(char const *s, char separator)
 {
-	int	i;
-	int	substring_count;
+	int i;
+	int substring_count;
 
 	i = 0;
 	substring_count = 0;
@@ -27,7 +27,7 @@ static int	count_substrings(char const *s, char separator)
 		while (s[i] && s[i] == separator)
 			i++;
 		if (!s[i])
-			break ;
+			break;
 		substring_count++;
 		while (s[i] && s[i] != separator)
 			i++;
@@ -35,17 +35,17 @@ static int	count_substrings(char const *s, char separator)
 	return (substring_count);
 }
 
-static void	free_result(char **result, int j)
+static void free_result(char **result, int j)
 {
 	while (j > 0)
 		free(result[--j]);
 }
 
-static char	*allocate_substring(const char *s, int start, int end)
+static char *allocate_substring(const char *s, int start, int end)
 {
-	char	*substr;
-	int		len;
-	int		i;
+	char *substr;
+	int len;
+	int i;
 
 	len = end - start;
 	substr = malloc(len + 1);
@@ -58,11 +58,11 @@ static char	*allocate_substring(const char *s, int start, int end)
 	return (substr);
 }
 
-static int	p_substrings(const char *s, char sep, char **res, int substrings)
+static int p_substrings(const char *s, char sep, char **res, int substrings)
 {
-	int	j;
-	int	start;
-	int	end;
+	int j;
+	int start;
+	int end;
 
 	j = 0;
 	start = 0;
@@ -83,10 +83,10 @@ static int	p_substrings(const char *s, char sep, char **res, int substrings)
 	return (1);
 }
 
-char	**ft_split(const char *s, char c)
+char **ft_split(const char *s, char c)
 {
-	int		substrings;
-	char	**result;
+	int substrings;
+	char **result;
 
 	if (!s)
 		return (0);
