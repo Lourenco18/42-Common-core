@@ -28,7 +28,7 @@ if __name__ == "__main__":
     print("=== Day 1 ===")
     print(rose.get_info())
 
-    # Simulate 7 days of growth
+    
     initial_height = rose.height
     for day in range(7):
         rose.grow()

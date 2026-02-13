@@ -77,15 +77,15 @@ if __name__ == "__main__":
     
     print("=== Garden Plant Types ===")
 
-    # Create Flower instances
+    
     rose1 = Flower("Rose", 25, 30, "red")
     rose2 = Flower("Daisy", 40, 20, "white")
 
-    # Create Tree instances
+    
     oak = Tree("Oak", 500, 1825, 50)
     pine = Tree("Pine", 600, 2000, 45)
 
-    # Create Vegetable instances
+    
     tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
     carrot = Vegetable("Carrot", 30, 120, "fall", "beta-carotene")
 
