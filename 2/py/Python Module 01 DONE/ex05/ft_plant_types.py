@@ -35,7 +35,7 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
-    def produce_shade(self) -> float:
+    def produceShade(self) -> float:
         shade_area = (self.trunk_diameter / 100) * self.height / 10
         return shade_area
 
@@ -67,15 +67,13 @@ if __name__ == "__main__":
     rose = Flower("Rose", 25, 30, "red")
     oak = Tree("Oak", 500, 1825, 50)
     tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
-    all_plants = [rose, oak, tomato]
+    print(rose.print_plant_info())
+    rose.bloom()
 
-    for plant in all_plants:
-        print(plant.print_plant_info())
-        if isinstance(plant, Flower):
-            plant.bloom()
-        elif isinstance(plant, Tree):
-            shade = plant.produce_shade()
-            print(f"{plant.name} provides {shade:.0f} square meters of shade")
-            print("")
-        elif isinstance(plant, Vegetable):
-            print(f"{plant.name} is rich in {plant.nutritional_value}")
+    print(oak.print_plant_info())
+    shade = oak.produceShade()
+    print(f"{oak.name} provides {shade:.0f} square meters of shade")
+    print("")
+
+    print(tomato.print_plant_info())
+    print(f"{tomato.name} is rich in {tomato.nutritional_value}")

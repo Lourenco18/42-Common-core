@@ -9,6 +9,7 @@ class Plant:
 
 
 if __name__ == "__main__":
+    count = 0
     print("=== Plant Factory Output ===")
 
     plants = [
@@ -21,5 +22,6 @@ if __name__ == "__main__":
 
     for plant in plants:
         print(f"Created: {plant.print_plant_info()}")
+        count += 1
 
-    print(f"\nTotal plants created: {len(plants)}")
+    print(f"\nTotal plants created: {count}")
