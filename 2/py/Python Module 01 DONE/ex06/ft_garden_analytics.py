@@ -2,6 +2,7 @@ class Plant:
     def __init__(self, name: str, height: int = 0) -> None:
         self.name = name
         self.height = height
+        self.plant_type = "regular"
 
     def grow(self) -> None:
         self.height += 1
@@ -11,15 +12,12 @@ class Plant:
 
 
 class FloweringPlant(Plant):
-    def __init__(
-        self,
-        name: str,
-        height: int = 0,
-        color: str = "unknown"
-    ) -> None:
+    def __init__(self, name: str, height: int = 0,
+                 color: str = "unknown") -> None:
         super().__init__(name, height)
         self.color = color
         self.is_blooming = False
+        self.plant_type = "flowering"
 
     def bloom(self) -> None:
         self.is_blooming = True
@@ -31,16 +29,11 @@ class FloweringPlant(Plant):
 
 
 class PrizeFlower(FloweringPlant):
-    def __init__(
-        self,
-        name: str,
-        height: int = 0,
-        color: str = "unknown",
-        prize_points: int = 0
-    ) -> None:
-
+    def __init__(self, name: str, height: int = 0, color: str = "unknown",
+                 prize_points: int = 0) -> None:
         super().__init__(name, height, color)
         self.prize_points = prize_points
+        self.plant_type = "prize"
 
     def get_info(self) -> str:
         bloom_status = "blooming" if self.is_blooming else "not blooming"
@@ -48,33 +41,11 @@ class PrizeFlower(FloweringPlant):
                f"({bloom_status}), Prize points: {self.prize_points}"
 
 
-class GardenStats:
-    def __init__(self) -> None:
-        self.plants_added = 0
-        self.total_growth = 0
-        self.plant_types_count = {"regular": 0, "flowering": 0, "prize": 0}
-
-    def record_growth(self, amount: int) -> None:
-        self.total_growth += amount
-
-    def record_plant(self, plant: Plant) -> None:
-        self.plants_added += 1
-        if isinstance(plant, PrizeFlower):
-            self.plant_types_count["prize"] += 1
-        elif isinstance(plant, FloweringPlant):
-            self.plant_types_count["flowering"] += 1
-        else:
-            self.plant_types_count["regular"] += 1
-
-    def validate_height(self, height: int) -> bool:
-        return height >= 0
-
-
 class Garden:
     def __init__(self, owner: str) -> None:
         self.owner = owner
         self.plants: list[Plant] = []
-        self.stats = GardenStats()
+        self.stats = GardenManager.GardenStats()
 
     def add_plant(self, plant: Plant) -> None:
         self.plants.append(plant)
@@ -105,6 +76,27 @@ class Garden:
 
 
 class GardenManager:
+    class GardenStats:
+        def __init__(self) -> None:
+            self.plants_added = 0
+            self.total_growth = 0
+            self.plant_types_count = {"regular": 0, "flowering": 0, "prize": 0}
+
+        def record_growth(self, amount: int) -> None:
+            self.total_growth += amount
+
+        def record_plant(self, plant: Plant) -> None:
+            self.plants_added += 1
+            if plant.plant_type == "prize":
+                self.plant_types_count["prize"] += 1
+            elif plant.plant_type == "flowering":
+                self.plant_types_count["flowering"] += 1
+            else:
+                self.plant_types_count["regular"] += 1
+
+        def validate_height(self, height: int) -> bool:
+            return height >= 0
+
     gardens: dict[str, Garden] = {}
 
     def __init__(self) -> None:
