@@ -6,5 +6,4 @@ def ft_garden_summary():
     print("Status: Growing well!")
 
 
-
 ft_garden_summary()
