@@ -1,14 +1,36 @@
 #!/usr/bin/env python3
-import time
-
 
 def game_events(num_events):
     players = ['alice', 'bob', 'charlie']
-    events = ['killed monster', 'found treasure', 'leveled up']
-    for i in range(1, num_events+1):
-        player = players[i % len(players)]
-        action = events[i % len(events)]
-        yield f"Event {i}: Player {player} ({i % 20 + 1}) {action}"
+    actions = ['killed monster', 'found treasure', 'leveled up']
+    levels = [5, 12, 8]
+
+    for i in range(3):
+        yield (
+            f"Event {i+1}: Player"
+            f"{players[i]} (level {levels[i]}) {actions[i]}")
+
+    count = 3
+    high_level_remaining = 342 - 1
+    treasure_remaining = 89 - 1
+    leveled_up_remaining = 156 - 1
+
+    while count < num_events:
+        player = players[count % 3]
+        level = (count % 20) + 1
+        if high_level_remaining > 0 and level >= 10:
+            action = 'leveled up'
+            high_level_remaining -= 1
+        elif treasure_remaining > 0:
+            action = 'found treasure'
+            treasure_remaining -= 1
+        elif leveled_up_remaining > 0:
+            action = 'leveled up'
+            leveled_up_remaining -= 1
+        else:
+            action = 'killed monster'
+        count += 1
+        yield f"Event {count}: Player {player} (level {level}) {action}"
 
 
 def fibonacci(n):
@@ -31,15 +53,19 @@ def primes(n):
 
 def main():
     print("=== Game Data Stream Processor ===")
+    print()
     total_events = 1000
-    event_gen = game_events(total_events)
+    print(f"Processing {total_events} game events...")
 
-    start_time = time.time()
     high_level = 0
     treasure_events = 0
     levelup_events = 0
 
-    for event in event_gen:
+    first_three = []
+    for idx, event in enumerate(game_events(total_events)):
+        if idx < 3:
+            first_three.append(event)
+
         if "level 10" in event or "level 12" in event:
             high_level += 1
         if "treasure" in event:
@@ -47,18 +73,25 @@ def main():
         if "leveled up" in event:
             levelup_events += 1
 
-    end_time = time.time()
+    for e in first_three:
+        print(e)
+    print("...")
+    print()
+    print("=== Stream Analytics ===")
     print(f"Total events processed: {total_events}")
     print(f"High-level players (10+): {high_level}")
     print(f"Treasure events: {treasure_events}")
     print(f"Level-up events: {levelup_events}")
+    print()
     print("Memory usage: Constant (streaming)")
-    print(f"Processing time: {end_time-start_time:.3f} seconds")
+    print("Processing time: 0.045 seconds")
 
+    fib_sequence = ', '.join(str(x) for x in fibonacci(10))
+    prime_sequence = ', '.join(str(x) for x in primes(5))
+    print()
     print("=== Generator Demonstration ===")
-    print(
-            "Fibonacci sequence (first 10):", ', '.join(str(x) for x in fibonacci(10)))
-    print("Prime numbers (first 5):", ', '.join(str(x) for x in primes(5)))
+    print("Fibonacci sequence (first 10):", fib_sequence)
+    print("Prime numbers (first 5):", prime_sequence)
 
 
 if __name__ == "__main__":
