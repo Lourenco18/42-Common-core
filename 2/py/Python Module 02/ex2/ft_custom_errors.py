@@ -1,17 +1,18 @@
+# ft_custom_errors.py
+
 class GardenError(Exception):
-    def __init__(self, message="A garden error occurred!"):
-        self.message = message
-        super().__init__(self.message)
+    """A basic error for garden problems"""
+    pass
 
 
 class PlantError(GardenError):
-    def __init__(self, message="There is a problem with a plant!"):
-        super().__init__(message)
+    """For problems with plants"""
+    pass
 
 
 class WaterError(GardenError):
-    def __init__(self, message="There is a watering problem!"):
-        super().__init__(message)
+    """For problems with watering"""
+    pass
 
 
 def check_plant():
@@ -24,22 +25,17 @@ def check_water():
 
 def test_custom_errors():
     print("=== Custom Garden Errors Demo ===")
-
-    """Test PlantError"""
-    print("\nTesting PlantError...")
+    print("Testing PlantError...")
     try:
         check_plant()
     except PlantError as e:
         print("Caught PlantError:", e)
-
-    """Test WaterError"""
-    print("\nTesting WaterError...")
+    print("Testing WaterError...")
     try:
         check_water()
     except WaterError as e:
         print("Caught WaterError:", e)
-
-    print("\nTesting catching all garden errors...")
+    print("Testing catching all garden errors...")
     try:
         check_plant()
     except GardenError as e:
@@ -49,8 +45,7 @@ def test_custom_errors():
         check_water()
     except GardenError as e:
         print("Caught a garden error:", e)
-
-    print("\nAll custom error types work correctly!")
+    print("All custom error types work correctly!")
 
 
 if __name__ == "__main__":
