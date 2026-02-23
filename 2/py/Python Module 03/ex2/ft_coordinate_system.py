@@ -27,7 +27,7 @@ def parse_coordinates(coord_str):
 
 
 def main():
-    print("=== Game Coordinate System ===")
+    print("=== Game Coordinate System ===\n")
 
     position = (10, 20, 5)
     print(f"Position created: {position}")
@@ -36,13 +36,14 @@ def main():
         f"{distance((0, 0, 0), position):.2f}")
 
     coord_str = "3,4,0"
+    print()
     print(f"Parsing coordinates: \"{coord_str}\"")
     parsed_position = parse_coordinates(coord_str)
-
+    print()
     invalid_coord_str = "abc,def,ghi"
     print(f"Parsing invalid coordinates: \"{invalid_coord_str}\"")
     parse_coordinates(invalid_coord_str)
-
+    print()
     if parsed_position:
         x, y, z = parsed_position
         print("Unpacking demonstration:")
