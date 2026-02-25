@@ -1,30 +1,29 @@
-
-
 def garden_operations():
     print("Testing ValueError...")
     try:
-        raise ValueError("invalid literal for int()")
+        int("abc")
     except ValueError as e:
-        print(f"Caught ValueError: {e}\n")
+        print(f"Caught ValueError: {e}")
 
     print("Testing ZeroDivisionError...")
     try:
-        raise ZeroDivisionError("division by zero")
+        10 / 0
     except ZeroDivisionError as e:
-        print(f"Caught ZeroDivisionError: {e}\n")
+        print(f"Caught ZeroDivisionError: {e}")
 
     print("Testing FileNotFoundError...")
     try:
         file = open("missing.txt", "r")
         file.close()
     except FileNotFoundError as e:
-        print(f"Caught FileNotFoundError: {e}\n")
+        print(f"Caught FileNotFoundError: {e}")
 
     print("Testing KeyError...")
     try:
-        raise KeyError("'missing_plant'")
+        garden = {"flower": "rose"}
+        print(garden["missing_plant"])
     except KeyError as e:
-        print(f"Caught KeyError: {e}\n")
+        print(f"Caught KeyError: {e}")
 
 
 def test_error_types():
@@ -34,10 +33,9 @@ def test_error_types():
 
     print("Testing multiple errors together...")
     try:
-
-        raise ValueError("simulated multiple errors")
+        int("xyz")
     except (ValueError, ZeroDivisionError):
-        print("Caught an error, but program continues!\n")
+        print("Caught an error, but program continues!")
 
     print("All error types tested successfully!")
 
