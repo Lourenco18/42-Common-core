@@ -1,4 +1,4 @@
-def ft_hello_gardem():
+def ft_hello_gardem() -> None:
     print("Hello, Garden Community!")
 
 
