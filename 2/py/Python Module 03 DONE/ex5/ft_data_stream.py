@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import typing
+
+
 def game_events(num_events: int) -> "typing.Iterator[str]":
     players = ['alice', 'bob', 'charlie']
     actions = ['killed monster', 'found treasure', 'leveled up']
