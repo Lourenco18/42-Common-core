@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-
-def game_events(num_events):
+import typing
+def game_events(num_events: int) -> "typing.Iterator[str]":
     players = ['alice', 'bob', 'charlie']
     actions = ['killed monster', 'found treasure', 'leveled up']
     levels = [5, 12, 8]
@@ -33,14 +33,14 @@ def game_events(num_events):
         yield f"Event {count}: Player {player} (level {level}) {action}"
 
 
-def fibonacci(n):
+def fibonacci(n: int) -> "typing.Iterator[int]":
     a, b = 0, 1
     for _ in range(n):
         yield a
         a, b = b, a+b
 
 
-def primes(n):
+def primes(n: int) -> "typing.Iterator[int]":
     found = 0
     num = 2
     while found < n:
@@ -51,7 +51,7 @@ def primes(n):
         num += 1
 
 
-def main():
+def main() -> None:
     print("=== Game Data Stream Processor ===")
     print()
     total_events = 1000

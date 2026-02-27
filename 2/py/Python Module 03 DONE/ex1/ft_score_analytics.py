@@ -2,7 +2,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     print("=== Player Score Analytics ===")
 
     args = sys.argv[1:]

@@ -3,7 +3,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     args = sys.argv[1:]
     inventory = dict()
 

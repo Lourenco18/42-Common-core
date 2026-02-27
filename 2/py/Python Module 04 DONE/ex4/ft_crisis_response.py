@@ -1,7 +1,7 @@
 print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===")
 
 
-def crisis_handler(filename):
+def crisis_handler(filename: str) -> None:
     try:
         print(f"CRISIS ALERT: Attempting access to '{filename}'")
 

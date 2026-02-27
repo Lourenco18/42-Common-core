@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def main():
+def main() -> None:
     print("=== Achievement Tracker System ===")
     print()
     alice = set(['first_kill', 'level_10', 'treasure_hunter', 'speed_demon'])

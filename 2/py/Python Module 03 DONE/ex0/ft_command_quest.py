@@ -3,7 +3,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     print("=== Command Quest ===")
 
     total_args = len(sys.argv)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def main():
+def main() -> None:
     print("=== Game Analytics Dashboard ===")
     print()
     players = ['alice', 'bob', 'charlie', 'diana']
