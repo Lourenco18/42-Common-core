@@ -12,13 +12,13 @@ if __name__ == "__main__":
 
         print()
         print("SECURE PRESERVATION:")
-
-        with open("classified_data.txt", "a") as vault:
-            vault.write("[CLASSIFIED] New security protocols archived\n")
-
-        print("[CLASSIFIED] New security protocols archived")
-        print("Vault automatically sealed upon completion\n")
-
-        print("All vault operations completed with maximum security.")
     except FileNotFoundError:
         print("ERROR: Storage vault not found. ")
+
+    with open("classified_data.txt", "a") as vault:
+        vault.write("[CLASSIFIED] New security protocols archived\n")
+
+    print("[CLASSIFIED] New security protocols archived")
+    print("Vault automatically sealed upon completion\n")
+
+    print("All vault operations completed with maximum security.")
