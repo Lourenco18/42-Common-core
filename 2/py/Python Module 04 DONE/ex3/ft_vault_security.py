@@ -5,18 +5,20 @@ if __name__ == "__main__":
     print("Vault connection established with failsafe protocols\n")
 
     print("SECURE EXTRACTION:")
-
-    with open("vault_data.txt", "r") as vault:
-        content = vault.read()
+    try:
+        with open("classified_data.txt", "r") as vault:
+            content = vault.read()
         print(content.strip())
 
-    print()
-    print("SECURE PRESERVATION:")
+        print()
+        print("SECURE PRESERVATION:")
 
-    with open("vault_data.txt", "a") as vault:
-        vault.write("[CLASSIFIED] New security protocols archived\n")
+        with open("classified_data.txt", "a") as vault:
+            vault.write("[CLASSIFIED] New security protocols archived\n")
 
-    print("[CLASSIFIED] New security protocols archived")
-    print("Vault automatically sealed upon completion\n")
+        print("[CLASSIFIED] New security protocols archived")
+        print("Vault automatically sealed upon completion\n")
 
-    print("All vault operations completed with maximum security.")
+        print("All vault operations completed with maximum security.")
+    except FileNotFoundError:
+        print("ERROR: Storage vault not found. ")

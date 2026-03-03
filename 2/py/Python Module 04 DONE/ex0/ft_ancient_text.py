@@ -3,7 +3,7 @@ if __name__ == "__main__":
     print("Accessing Storage Vault: ancient_fragment.txt")
 
     try:
-        file = open("/ancient_fragment.txt", "r")
+        file = open("./ancient_fragment.txt", "r")
         print("Connection established...\n")
         print("RECOVERED DATA:")
 

@@ -1,5 +1,5 @@
 if __name__ == "__main__":
-    print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===")
+    print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===\n")
 
     def crisis_handler(filename: str) -> None:
         try:
@@ -8,19 +8,19 @@ if __name__ == "__main__":
             with open(filename, "r") as file:
                 content = file.read().strip()
                 print(f"SUCCESS: Archive recovered - \"{content}\"")
-                print("STATUS: Normal operations resumed")
+                print("STATUS: Normal operations resumed\n")
 
         except FileNotFoundError:
             print("RESPONSE: Archive not found in storage matrix")
-            print("STATUS: Crisis handled, system stable")
+            print("STATUS: Crisis handled, system stable\n")
 
         except PermissionError:
             print("RESPONSE: Security protocols deny access")
-            print("STATUS: Crisis handled, security maintained")
+            print("STATUS: Crisis handled, security maintained\n")
 
         except Exception:
             print("RESPONSE: Unexpected system anomaly detected")
-            print("STATUS: Crisis contained, investigation ongoing")
+            print("STATUS: Crisis contained, investigation ongoing\n")
 
     crisis_handler("lost_archive.txt")
     crisis_handler("classified_vault.txt")
