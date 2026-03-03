@@ -1,23 +1,23 @@
-print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===")
+if __name__ == "__main__":
+    print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
 
-filename = "new_discovery.txt"
+    filename = "new_discovery.txt"
 
-print("Initializing new storage unit: " + filename)
+    print("Initializing new storage unit: " + filename)
+    file = open(filename, "w")
 
-file = open(filename, "w")
+    print("Storage unit created successfully...")
+    print("Inscribing preservation data...")
 
-print("Storage unit created successfully...")
-print("Inscribing preservation data...")
+    file.write("[ENTRY 001] New quantum algorithm discovered\n")
+    file.write("[ENTRY 002] Efficiency increased by 347%\n")
+    file.write("[ENTRY 003] Archived by Data Archivist trainee\n")
 
-file.write("[ENTRY 001] New quantum algorithm discovered\n")
-file.write("[ENTRY 002] Efficiency increased by 347%\n")
-file.write("[ENTRY 003] Archived by Data Archivist trainee\n")
+    print("[ENTRY 001] New quantum algorithm discovered")
+    print("[ENTRY 002] Efficiency increased by 347%")
+    print("[ENTRY 003] Archived by Data Archivist trainee")
 
-print("[ENTRY 001] New quantum algorithm discovered")
-print("[ENTRY 002] Efficiency increased by 347%")
-print("[ENTRY 003] Archived by Data Archivist trainee")
+    file.close()
 
-file.close()
-
-print("Data inscription complete. Storage unit sealed.")
-print("Archive 'new_discovery.txt' ready for long-term preservation.")
+    print("Data inscription complete. Storage unit sealed.")
+    print("Archive 'new_discovery.txt' ready for long-term preservation.")

@@ -1,23 +1,22 @@
-print("=== CYBER ARCHIVES - VAULT SECURITY SYSTEM ===\n")
-print("Initiating secure vault access...")
+if __name__ == "__main__":
+    print("=== CYBER ARCHIVES - VAULT SECURITY SYSTEM ===\n")
 
-print("Vault connection established with failsafe protocols\n")
-print("SECURE EXTRACTION:")
+    print("Initiating secure vault access...")
+    print("Vault connection established with failsafe protocols\n")
 
-with open("vault_data.txt", "w") as vault:
-    vault.write("[CLASSIFIED] Quantum encryption keys recovered\n")
-    vault.write("[CLASSIFIED] Archive integrity: 100%\n")
+    print("SECURE EXTRACTION:")
 
-with open("vault_data.txt", "r") as vault:
-    content = vault.read()
-    print(content.strip())
-print()
-print("SECURE PRESERVATION:")
+    with open("vault_data.txt", "r") as vault:
+        content = vault.read()
+        print(content.strip())
 
-with open("vault_data.txt", "a") as vault:
-    vault.write("[CLASSIFIED] New security protocols archived\n")
+    print()
+    print("SECURE PRESERVATION:")
 
-print("[CLASSIFIED] New security protocols archived")
+    with open("vault_data.txt", "a") as vault:
+        vault.write("[CLASSIFIED] New security protocols archived\n")
 
-print("Vault automatically sealed upon completion\n")
-print("All vault operations completed with maximum security.")
+    print("[CLASSIFIED] New security protocols archived")
+    print("Vault automatically sealed upon completion\n")
+
+    print("All vault operations completed with maximum security.")

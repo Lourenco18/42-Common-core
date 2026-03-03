@@ -1,31 +1,29 @@
-print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===")
+if __name__ == "__main__":
+    print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===")
 
+    def crisis_handler(filename: str) -> None:
+        try:
+            print(f"CRISIS ALERT: Attempting access to '{filename}'")
 
-def crisis_handler(filename: str) -> None:
-    try:
-        print(f"CRISIS ALERT: Attempting access to '{filename}'")
+            with open(filename, "r") as file:
+                content = file.read().strip()
+                print(f"SUCCESS: Archive recovered - \"{content}\"")
+                print("STATUS: Normal operations resumed")
 
-        with open(filename, "r") as file:
-            content = file.read().strip()
-            print(f"SUCCESS: Archive recovered - \"{content}\"")
-            print("STATUS: Normal operations resumed")
+        except FileNotFoundError:
+            print("RESPONSE: Archive not found in storage matrix")
+            print("STATUS: Crisis handled, system stable")
 
-    except FileNotFoundError:
-        print("RESPONSE: Archive not found in storage matrix")
-        print("STATUS: Crisis handled, system stable")
+        except PermissionError:
+            print("RESPONSE: Security protocols deny access")
+            print("STATUS: Crisis handled, security maintained")
 
-    except PermissionError:
-        print("RESPONSE: Security protocols deny access")
-        print("STATUS: Crisis handled, security maintained")
+        except Exception:
+            print("RESPONSE: Unexpected system anomaly detected")
+            print("STATUS: Crisis contained, investigation ongoing")
 
-    except Exception:
-        print("RESPONSE: Unexpected system anomaly detected")
-        print("STATUS: Crisis contained, investigation ongoing")
+    crisis_handler("lost_archive.txt")
+    crisis_handler("classified_vault.txt")
+    crisis_handler("standard_archive.txt")
 
-
-# Test scenarios
-crisis_handler("lost_archive.txt")
-crisis_handler("classified_vault.txt")
-crisis_handler("standard_archive.txt")
-
-print("All crisis scenarios handled successfully. Archives secure.")
+    print("All crisis scenarios handled successfully. Archives secure.")
