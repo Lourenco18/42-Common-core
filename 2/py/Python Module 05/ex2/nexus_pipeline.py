@@ -5,21 +5,14 @@ from collections import deque, defaultdict
 import time
 
 
-# =========================
-# Stage Protocol (Duck Typing)
-# =========================
 class ProcessingStage(Protocol):
     def process(self, data: Any) -> Any:
         ...
 
 
-# =========================
-# Concrete Stages
-# =========================
 class InputStage:
     def process(self, data: Any) -> Any:
         if isinstance(data, str) and data.startswith("{") and data.endswith("}"):
-            # very lightweight JSON-like parsing
             parsed: Dict[str, Any] = {
                 k.strip().strip('"'): v.strip().strip('"')
                 for k, v in (
@@ -54,15 +47,13 @@ class OutputStage:
                     f"{data['value']}°{data.get('unit', '')} (Normal range)"
                 )
             if "csv" in data:
-                return f"User activity logged: {len(data['csv']) - 1} actions processed"
+                return (f"User activity logged: "
+                        f"{len(data['csv']) - 1} actions processed")
             if "raw" in data:
-                return f"Stream summary: processed raw input"
+                return ("Stream summary: processed raw input")
         return "Output delivered"
 
 
-# =========================
-# Abstract Pipeline Base
-# =========================
 class ProcessingPipeline(ABC):
     def __init__(self, pipeline_id: str) -> None:
         self.pipeline_id: str = pipeline_id
@@ -107,9 +98,6 @@ class ProcessingPipeline(ABC):
         }
 
 
-# =========================
-# Adapters (Inheritance + Override)
-# =========================
 class JSONAdapter(ProcessingPipeline):
     def process(self, data: Any) -> Union[str, Any]:
         print("Processing JSON data through pipeline...")
@@ -128,9 +116,6 @@ class StreamAdapter(ProcessingPipeline):
         return self.execute(data)
 
 
-# =========================
-# Nexus Manager
-# =========================
 class NexusManager:
     def __init__(self) -> None:
         self.pipelines: Dict[str, ProcessingPipeline] = {}
@@ -154,9 +139,6 @@ class NexusManager:
         return data
 
 
-# =========================
-# Demonstration
-# =========================
 def main() -> None:
     print("=== CODE NEXUS - ENTERPRISE PIPELINE SYSTEM ===")
     print("Initializing Nexus Manager...")
@@ -203,7 +185,7 @@ def main() -> None:
     print(f"Chain result: {result}")
 
     print("=== Error Recovery Test ===")
-    # Force transformation failure
+
     print(manager.process_data("JSON_PIPE", 12345))
 
     print("Performance:", json_pipeline.get_stats())

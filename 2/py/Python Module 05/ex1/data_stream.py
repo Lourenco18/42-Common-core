@@ -4,9 +4,6 @@ from typing import Any, List, Dict, Union, Optional
 
 
 class DataStream(ABC):
-    """
-    Abstract base class representing a generic data stream.
-    """
 
     def __init__(self, stream_id: str, stream_type: str) -> None:
         self.stream_id: str = stream_id
@@ -15,26 +12,17 @@ class DataStream(ABC):
 
     @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
-        """
-        Process a batch of data and return a summary string.
-        """
         pass
 
     def filter_data(
         self, data_batch: List[Any], criteria: Optional[str] = None
     ) -> List[Any]:
-        """
-        Default filtering behavior (returns all if no criteria).
-        Can be overridden by subclasses.
-        """
         if criteria is None:
             return data_batch
-        return [item for item in data_batch if criteria.lower() in str(item).lower()]
+        return [item for item in data_batch
+                if criteria.lower() in str(item).lower()]
 
     def get_stats(self) -> Dict[str, Union[str, int, float]]:
-        """
-        Return basic stream statistics.
-        """
         return {
             "stream_id": self.stream_id,
             "stream_type": self.stream_type,
@@ -43,18 +31,14 @@ class DataStream(ABC):
 
 
 class SensorStream(DataStream):
-    """
-    Specialized stream for environmental sensor data.
-    Expected formats like: "temp:22.5", "humidity:65"
-    """
-
     def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id, "Environmental Data")
 
     def process_batch(self, data_batch: List[Any]) -> str:
         try:
             valid_readings: List[str] = [
-                item for item in data_batch if isinstance(item, str) and ":" in item
+                item for
+                item in data_batch if isinstance(item, str) and ":" in item
             ]
 
             temps: List[float] = [
@@ -89,10 +73,6 @@ class SensorStream(DataStream):
 
 
 class TransactionStream(DataStream):
-    """
-    Specialized stream for financial transaction data.
-    Expected formats like: "buy:100", "sell:150"
-    """
 
     def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id, "Financial Data")
@@ -100,7 +80,8 @@ class TransactionStream(DataStream):
     def process_batch(self, data_batch: List[Any]) -> str:
         try:
             operations: List[str] = [
-                item for item in data_batch if isinstance(item, str) and ":" in item
+                item for item in data_batch if
+                isinstance(item, str) and ":" in item
             ]
 
             net_flow: int = 0
@@ -136,11 +117,6 @@ class TransactionStream(DataStream):
 
 
 class EventStream(DataStream):
-    """
-    Specialized stream for system events.
-    Example events: "login", "error", "logout"
-    """
-
     def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id, "System Events")
 
@@ -176,10 +152,6 @@ class EventStream(DataStream):
 
 
 class StreamProcessor:
-    """
-    Manager class that handles multiple stream types polymorphically.
-    """
-
     def process_streams(
         self, streams: List[DataStream], batches: List[List[Any]]
     ) -> None:
@@ -197,7 +169,9 @@ def main() -> None:
 
     print("Initializing Transaction Stream...")
     transaction = TransactionStream("TRANS_001")
-    print(f"Stream ID: {transaction.stream_id}, Type: {transaction.stream_type}")
+    print(
+        f"Stream ID: {transaction.stream_id}, "
+        f"ype: {transaction.stream_type}")
     print(transaction.process_batch(["buy:100", "sell:150", "buy:75"]))
 
     print("Initializing Event Stream...")
@@ -228,7 +202,6 @@ def main() -> None:
 
     filtered_sensor = streams[0].filter_data(batches[0], "high")
     filtered_transaction = streams[1].filter_data(batches[1], "large")
-    filtered_event = streams[2].filter_data(batches[2], "critical")
 
     print(f"Filtered results: {len(filtered_sensor)} critical sensor alerts, "
           f"{len(filtered_transaction)} large transactions")

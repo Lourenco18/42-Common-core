@@ -4,35 +4,20 @@ from typing import Any, List, Union
 
 
 class DataProcessor(ABC):
-    """
-    Abstract base class defining the common processing interface.
-    """
 
     @abstractmethod
     def process(self, data: Any) -> str:
-        """
-        Process the given data and return a result string.
-        """
         pass
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
-        """
-        Validate if data is appropriate for this processor.
-        """
         pass
 
     def format_output(self, result: str) -> str:
-        """
-        Default output formatting. Can be overridden by subclasses.
-        """
         return f"Output: {result}"
 
 
 class NumericProcessor(DataProcessor):
-    """
-    Processor specialized for numeric list data.
-    """
 
     def process(self, data: Any) -> str:
         try:
@@ -44,7 +29,10 @@ class NumericProcessor(DataProcessor):
             count: int = len(numbers)
             average: float = total / count if count > 0 else 0.0
 
-            return f"Processed {count} numeric values, sum={int(total) if total.is_integer() else total}, avg={average}"
+            return (
+                    f"Processed {count} numeric values, "
+                    f"sum={int(total) if total.is_integer() else total}, "
+                    f"avg={average}")
         except Exception as error:
             return f"Numeric processing error: {error}"
 
@@ -57,9 +45,6 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    """
-    Processor specialized for text data.
-    """
 
     def process(self, data: Any) -> str:
         try:
@@ -70,7 +55,8 @@ class TextProcessor(DataProcessor):
             char_count: int = len(text)
             word_count: int = len(text.split())
 
-            return f"Processed text: {char_count} characters, {word_count} words"
+            return (
+                f"Processed text: {char_count} characters, {word_count} words")
         except Exception as error:
             return f"Text processing error: {error}"
 
@@ -79,10 +65,6 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    """
-    Processor specialized for log entry data.
-    Expected format: "LEVEL: message"
-    """
 
     def process(self, data: Any) -> str:
         try:
@@ -108,9 +90,6 @@ class LogProcessor(DataProcessor):
         return ":" in data
 
     def format_output(self, result: str) -> str:
-        """
-        Override default formatting to demonstrate method overriding.
-        """
         return result
 
 
