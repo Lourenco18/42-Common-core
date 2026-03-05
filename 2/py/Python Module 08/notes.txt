@@ -1,0 +1,12 @@
+como testar:
+Ex0:
+    python -m venv matrix_env
+    source matrix_env/bin/activate
+    python ex0/construct.py
+Ex1:
+    pip install -r ex1/requirements.txt
+    python ex1/loading.py
+Ex2:
+    pip install python-dotenv
+    cp .env.example .env
+    python ex2/oracle.py
