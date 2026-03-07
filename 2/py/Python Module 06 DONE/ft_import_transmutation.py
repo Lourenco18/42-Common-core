@@ -9,8 +9,6 @@ print("=== Import Transmutation Mastery ===\n")
 print("Method 1 - Full module import:")
 print(alchemy.elements.create_fire())
 
-# Method 2
-
 print("\nMethod 2 - Specific function import:")
 print(create_water())
 
