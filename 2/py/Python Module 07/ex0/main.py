@@ -1,29 +1,31 @@
 from ex0.CreatureCard import CreatureCard
 
 
-def main() -> None:
-    print("=== DataDeck Card Foundation ===\n")
+def main():
+    print("=== DataDeck Card Foundation ===")
+    print("Testing Abstract Base Class Design:")
 
-    dragon = CreatureCard(
-        "Fire Dragon",
-        5,
-        "Legendary",
-        7,
-        5
-    )
+    dragon = CreatureCard(name="Fire Dragon", cost=5, rarity="Legendary",
+                          attack=7, health=5)
 
-    print("CreatureCard Info:")
+    print("\nCreatureCard Info:")
     print(dragon.get_card_info())
 
-    print("\nPlayable with 6 mana?")
-    print(dragon.is_playable(6))
-    print(dragon.play({}))
+    available_mana = 6
+    print(f"\nPlaying {dragon.name} with {available_mana} mana available:")
+    print(f"Playable: {dragon.is_playable(available_mana)}")
+    print(f"Play result: {dragon.play({})}")
 
-    print("\nAttack test:")
-    print(dragon.attack_target("Goblin Warrior"))
+    goblin = CreatureCard(name="Goblin Warrior", cost=1,
+                          rarity="Common", attack=2, health=1)
+    print(f"\n{dragon.name} attacks {goblin.name}:")
+    print(f"Attack result: {dragon.attack_target(goblin)}")
 
-    print("\nPlayable with 3 mana?")
-    print(dragon.is_playable(3))
+    low_mana = 3
+    print(f"\nTesting insufficient mana ({low_mana} available):")
+    print(f"Playable: {dragon.is_playable(low_mana)}")
+
+    print("\nAbstract pattern successfully demonstrated!")
 
 
 if __name__ == "__main__":

@@ -1,33 +1,23 @@
 import random
-from typing import List, Dict
+from typing import List
 from ex0.Card import Card
 
 
 class Deck:
-    def __init__(self) -> None:
+
+    def __init__(self):
         self.cards: List[Card] = []
 
-    def add_card(self, card: Card) -> None:
+    def add_card(self, card: Card):
         self.cards.append(card)
 
-    def remove_card(self, card_name: str) -> bool:
-        for card in self.cards:
-            if card.name == card_name:
-                self.cards.remove(card)
-                return True
-        return False
-
-    def shuffle(self) -> None:
+    def shuffle(self):
         random.shuffle(self.cards)
 
-    def draw_card(self) -> Card:
+    def draw_card(self):
+        if len(self.cards) == 0:
+            return None
         return self.cards.pop(0)
 
-    def get_deck_stats(self) -> Dict:
-        total = len(self.cards)
-        avg_cost = (sum(card.cost for card in self.cards) / total if total else 0)
-
-        return {
-            "total_cards": total,
-            "avg_cost": avg_cost
-        }
+    def deck_size(self):
+        return len(self.cards)

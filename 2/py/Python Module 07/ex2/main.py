@@ -1,25 +1,13 @@
-from ex2.EliteCard import EliteCard
+from EliteCard import EliteCard
 
 
-def main() -> None:
-    print("=== DataDeck Ability System ===\n")
+def main():
 
-    elite = EliteCard(
-        "Arcane Warrior",
-        6,
-        "Epic",
-        5,
-        8,
-        5
-    )
+    elite = EliteCard("Archmage Dragon", 6, "Legendary", 8, 8)
 
-    print("Combat phase:")
-    print(elite.attack("Enemy"))
-    print(elite.defend(3))
+    print(elite.attack("Enemy Knight"))
 
-    print("\nMagic phase:")
-    print(elite.cast_spell("Fireball", ["Enemy1", "Enemy2"]))
-    print(elite.channel_mana(3))
+    print(elite.cast_spell())
 
 
 if __name__ == "__main__":

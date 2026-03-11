@@ -1,20 +1,23 @@
-from ex4.TournamentCard import TournamentCard
-from ex4.TournamentPlatform import TournamentPlatform
+from TournamentCard import TournamentCard
+from TournamentPlatform import TournamentPlatform
 
 
-def main() -> None:
-    print("=== DataDeck Tournament Platform ===\n")
+def main():
 
     platform = TournamentPlatform()
 
-    dragon = TournamentCard("Dragon", 5, "Epic", 6, 6)
-    wizard = TournamentCard("Wizard", 4, "Rare", 5, 5)
+    c1 = TournamentCard("Dragon", 5, "Epic", 6, 6, 90)
+    c2 = TournamentCard("Goblin", 2, "Common", 2, 2, 40)
+    c3 = TournamentCard("Phoenix", 7, "Legendary", 8, 5, 95)
 
-    id1 = platform.register_card(dragon)
-    id2 = platform.register_card(wizard)
+    platform.register_card(c1)
+    platform.register_card(c2)
+    platform.register_card(c3)
 
-    print(platform.create_match(id1, id2))
-    print(platform.generate_tournament_report())
+    top_cards = platform.get_top_cards()
+
+    for card in top_cards:
+        print(card.name, card.get_rank())
 
 
 if __name__ == "__main__":

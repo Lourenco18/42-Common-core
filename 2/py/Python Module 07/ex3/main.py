@@ -1,19 +1,18 @@
-from ex3.GameEngine import GameEngine
-from ex3.AggressiveStrategy import AggressiveStrategy
-from ex3.FantasyCardFactory import FantasyCardFactory
+from AggressiveStrategy import AggressiveStrategy
+from FantasyCardFactory import FantasyCardFactory
+from GameEngine import GameEngine
 
 
-def main() -> None:
-    print("=== DataDeck Game Engine ===\n")
+def main():
 
-    engine = GameEngine()
-    engine.configure_engine(
-        FantasyCardFactory(),
-        AggressiveStrategy()
-    )
+    strategy = AggressiveStrategy()
+    factory = FantasyCardFactory()
 
-    print(engine.get_engine_status())
-    print(engine.simulate_turn())
+    engine = GameEngine(strategy, factory)
+
+    result = engine.start()
+
+    print(result)
 
 
 if __name__ == "__main__":

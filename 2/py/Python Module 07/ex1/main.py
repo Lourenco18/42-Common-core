@@ -1,26 +1,27 @@
-from ex1.SpellCard import SpellCard
-from ex1.ArtifactCard import ArtifactCard
-from ex1.Deck import Deck
+from Deck import Deck
+from SpellCard import SpellCard
+from ArtifactCard import ArtifactCard
 from ex0.CreatureCard import CreatureCard
 
 
-def main() -> None:
-    print("=== DataDeck Deck Builder ===\n")
+def main():
 
     deck = Deck()
 
-    deck.add_card(CreatureCard("Fire Dragon", 5, "Legendary", 7, 5))
-    deck.add_card(SpellCard("Lightning Bolt", 3, "Rare", "Damage"))
-    deck.add_card(ArtifactCard("Mana Crystal", 2,
-                               "Common", 3, "+1 mana per turn"))
+    c1 = CreatureCard("Dragon", 5, "Epic", 6, 6)
+    s1 = SpellCard("Fireball", 3, "Rare", "Deal 5 damage")
+    a1 = ArtifactCard("Magic Sword", 4, "Common", 10)
 
-    print(deck.get_deck_stats())
+    deck.add_card(c1)
+    deck.add_card(s1)
+    deck.add_card(a1)
+
+    print("Deck size:", deck.deck_size())
 
     deck.shuffle()
 
-    while deck.cards:
-        card = deck.draw_card()
-        print(card.play({}))
+    print("Draw card:", deck.draw_card().name)
+    print("Deck size:", deck.deck_size())
 
 
 if __name__ == "__main__":
