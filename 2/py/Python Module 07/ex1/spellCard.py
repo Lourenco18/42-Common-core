@@ -2,7 +2,6 @@ from ex0.Card import Card
 
 
 class SpellCard(Card):
-    """Concrete card representing an instant magical effect (one-time use)."""
 
     def __init__(self, name: str, cost: int, rarity: str,
                  effect_type: str) -> None:
@@ -16,7 +15,6 @@ class SpellCard(Card):
         return info
 
     def play(self, game_state: dict) -> dict:
-        """Play the spell, producing its effect description."""
         effect_descriptions = {
             'damage': f'Deal {self.cost} damage to target',
             'heal':   f'Restore {self.cost * 2} health to target',
@@ -32,7 +30,6 @@ class SpellCard(Card):
         }
 
     def resolve_effect(self, targets: list) -> dict:
-        """Resolve the spell's effect against a list of targets."""
         return {
             'spell': self.name,
             'effect_type': self.effect_type,
