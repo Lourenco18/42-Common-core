@@ -30,4 +30,5 @@ Import ciircular:
         importar dentro da função, não no topo do ficheiro. 
         Assim o import só acontece quando a função é chamada 
         (quando tudo já está carregado):
-        
+    
+
